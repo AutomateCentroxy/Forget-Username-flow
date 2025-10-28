@@ -73,7 +73,107 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true
+			"selected": false
+		},
+		{
+			"id": "rrfNode-3120f89a-de46-49fd-a259-ef2f6ff048fe",
+			"type": "rrfNode",
+			"position": {
+				"x": 530,
+				"y": 30
+			},
+			"data": {
+				"id": "rrfNode-3120f89a-de46-49fd-a259-ef2f6ff048fe",
+				"type": "rrfNode",
+				"position": {
+					"x": 530,
+					"y": 30
+				},
+				"previousNodeId": "assignmentNode-6739a882-5358-49fe-9a50-f3237250d3a4",
+				"agamaData": {
+					"assignments": [],
+					"nodeIcon": "ph:globe-simple",
+					"templatePath": "",
+					"asssignedVariableName": "",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "",
+					"hasComment": true,
+					"comment": ""
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 124
+			}
+		},
+		{
+			"id": "assignmentNode-bae387c0-b0f1-43cc-8e77-fd5859d536dc",
+			"type": "assignmentNode",
+			"position": {
+				"x": 780,
+				"y": 30
+			},
+			"data": {
+				"id": "assignmentNode-bae387c0-b0f1-43cc-8e77-fd5859d536dc",
+				"type": "assignmentNode",
+				"position": {
+					"x": 780,
+					"y": 30
+				},
+				"previousNodeId": "rrfNode-3120f89a-de46-49fd-a259-ef2f6ff048fe",
+				"agamaData": {
+					"assignments": [],
+					"nodeIcon": "material-symbols:equal",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "",
+					"hasComment": true,
+					"comment": ""
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 124
+			}
+		},
+		{
+			"id": "callNode-e5b55d7f-da21-4437-a525-6a6728cb6f3e",
+			"type": "callNode",
+			"position": {
+				"x": 1030,
+				"y": 30
+			},
+			"data": {
+				"id": "callNode-e5b55d7f-da21-4437-a525-6a6728cb6f3e",
+				"type": "callNode",
+				"position": {
+					"x": 1030,
+					"y": 30
+				},
+				"previousNodeId": "assignmentNode-bae387c0-b0f1-43cc-8e77-fd5859d536dc",
+				"agamaData": {
+					"javaClassName": "",
+					"javaMethodName": "",
+					"javaVariableName": "",
+					"exceptionVariableField": "",
+					"callType": "Call static method",
+					"arguments": [],
+					"nodeIcon": "material-symbols:code",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "",
+					"hasComment": true,
+					"comment": ""
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 124
+			}
 		}
 	],
 	"edges": [
@@ -95,11 +195,68 @@
 			},
 			"labelShowBg": true,
 			"sourceHandle": "source_startNode-3c047ab6-bfc3-4aa6-b433-4e1bbd2473ee"
+		},
+		{
+			"id": "assignmentNode-6739a882-5358-49fe-9a50-f3237250d3a4-rrfNode-3120f89a-de46-49fd-a259-ef2f6ff048fe",
+			"type": "default",
+			"source": "assignmentNode-6739a882-5358-49fe-9a50-f3237250d3a4",
+			"target": "rrfNode-3120f89a-de46-49fd-a259-ef2f6ff048fe",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_assignmentNode-6739a882-5358-49fe-9a50-f3237250d3a4"
+		},
+		{
+			"id": "rrfNode-3120f89a-de46-49fd-a259-ef2f6ff048fe-assignmentNode-bae387c0-b0f1-43cc-8e77-fd5859d536dc",
+			"type": "default",
+			"source": "rrfNode-3120f89a-de46-49fd-a259-ef2f6ff048fe",
+			"target": "assignmentNode-bae387c0-b0f1-43cc-8e77-fd5859d536dc",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_rrfNode-3120f89a-de46-49fd-a259-ef2f6ff048fe"
+		},
+		{
+			"id": "assignmentNode-bae387c0-b0f1-43cc-8e77-fd5859d536dc-callNode-e5b55d7f-da21-4437-a525-6a6728cb6f3e",
+			"type": "default",
+			"source": "assignmentNode-bae387c0-b0f1-43cc-8e77-fd5859d536dc",
+			"target": "callNode-e5b55d7f-da21-4437-a525-6a6728cb6f3e",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_assignmentNode-bae387c0-b0f1-43cc-8e77-fd5859d536dc"
 		}
 	],
 	"viewport": {
-		"x": 3,
-		"y": 161,
-		"zoom": 1
+		"x": -710.403168715319,
+		"y": 302.8903588907328,
+		"zoom": 1.1843691695621679
 	}
 }
