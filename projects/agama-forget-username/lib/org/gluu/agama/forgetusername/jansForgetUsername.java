@@ -15,10 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 import org.gluu.agama.smtp.*; // localized email templates
 
-public class JansForgetUsername {
+public class jansForgetUsername {
 
     private static final Logger logger = LoggerFactory.getLogger(FlowService.class);
-    private static JansForgetUsername INSTANCE; // <--- singleton instance
+    private static jansForgetUsername INSTANCE; // <--- singleton instance
 
     private static final String UID = "uid";
     private static final String INUM_ATTR = "inum";
@@ -26,12 +26,12 @@ public class JansForgetUsername {
     private static final String MAIL = "mail";
 
     // Default constructor (required by Agama)
-    public JansForgetUsername() {}
+    public jansForgetUsername() {}
 
     // Singleton accessor
-    public static synchronized JansForgetUsername getInstance() {
+    public static synchronized jansForgetUsername getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new JansForgetUsername();
+            INSTANCE = new ansForgetUsername();
         }
         return INSTANCE;
     }
