@@ -9,7 +9,8 @@ userInput = RRF "InputEmail.ftlh" uiFeedback
 email = userInput.mail
 Log "@info User mail ++++++++++++++++++++++" email
 userData = Call forgetusernameService getUserEntityByMail email
-Log "@ " __________
+// "users details+++++++"
+Log "@info users details+++++++" userData
 When 
      Log "@ " __________
      Call __________#__________ 
