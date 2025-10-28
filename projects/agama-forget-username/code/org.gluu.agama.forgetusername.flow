@@ -2,6 +2,8 @@ Flow org.gluu.agama.forgetusername
      Basepath ""
 // Create  variable for UCreate  variable for UI feedbackI feedback
 uiFeedback = {}
+// forgetusernameService
+forgetusernameService = Call org.gluu.agama.senduser.sendUsername#getInstance 
 // userInput
 userInput = RRF "InputEmail.ftlh" uiFeedback
 email = userInput.mail
