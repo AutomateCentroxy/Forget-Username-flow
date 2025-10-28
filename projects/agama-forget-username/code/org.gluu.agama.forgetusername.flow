@@ -8,7 +8,7 @@ forgetusernameService = Call org.gluu.agama.senduser.sendUsername#getInstance
 userInput = RRF "InputEmail.ftlh" uiFeedback
 email = userInput.mail
 Log "@info User mail ++++++++++++++++++++++" email
-Call __________#__________ 
+userData = Call forgetusernameService getUserEntityByMail email
 Log "@ " __________
 When 
      Log "@ " __________
