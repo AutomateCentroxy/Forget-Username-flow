@@ -5,14 +5,10 @@ import org.gluu.agama.forgetusername.jansForgetUsername;
 
 public abstract class forgetusername {
 
-    /**
-     * Fetch user details by email.
-     */
+  
     public abstract Map<String, String> getUserEntityByMail(String mail);
 
-    /**
-     * Send username email to the user.
-     */
+    
     public abstract boolean sendUsernameEmail(String to, String userName, String lang);
 
     /**
