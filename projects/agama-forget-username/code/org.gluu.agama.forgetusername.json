@@ -411,7 +411,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true
+			"selected": false
 		},
 		{
 			"id": "callNode-185898c1-8236-479b-87fc-6d4a35276578",
@@ -436,8 +436,8 @@
 					"callType": "Call method on instance",
 					"arguments": [
 						"email",
-						"usernamee",
-						"langg"
+						"username",
+						"lang"
 					],
 					"nodeIcon": "material-symbols:code",
 					"nodeColor": "",
@@ -453,7 +453,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": false
+			"selected": true
 		},
 		{
 			"id": "logNode-a06b25e3-c793-4e7a-9c5e-3f9f75faef46",
