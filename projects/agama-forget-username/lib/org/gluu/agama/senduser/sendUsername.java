@@ -7,7 +7,7 @@ public abstract class SendUsername {
 
     public abstract Map<String, String> getUserEntityByMail(String mail);
 
-    public abstract boolean sendUsernameEmail(String to, String userName, String lang);
+    public abstract boolean sendUsernameEmail(String to, String usernam, String lang);
 
     public static SendUsername getInstance() {
         return jansForgetUsername.getInstance(); // use the singleton
