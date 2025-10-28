@@ -15,7 +15,7 @@ When userData is not null
      username = userData.uid
      lang = userData.lang
      Log "@info users details++++++++++++" username lang
-     sendMailed = Call forgetusernameService sendUsernameEmail email usernamee langg
+     sendMailed = Call forgetusernameService sendUsernameEmail email username lang
      Log "@info Email send to user++++"
      RRF "acknowledgementEmail.ftlh" uiFeedback
      Finish usernamee
