@@ -11,7 +11,7 @@ Log "@info User mail ++++++++++++++++++++++" email
 userData = Call forgetusernameService getUserEntityByMail email
 // "users details+++++++"
 Log "@info users details+++++++" userData
-When 
+When userData is not null
      Log "@ " __________
      Call __________#__________ 
      Log "@ " __________
