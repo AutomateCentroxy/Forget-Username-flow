@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class jansForgetUsername {
 
-    private static final Logger logger = LoggerFactory.getLogger(jansForgetUsername.class);
+    private static final Logger logger = LoggerFactory.getLogger(FlowService.class);
 
     private static final String UID = "uid";
     private static final String INUM_ATTR = "inum";
