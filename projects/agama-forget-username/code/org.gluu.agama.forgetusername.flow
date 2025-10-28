@@ -5,7 +5,7 @@ uiFeedback = {}
 // userInput
 userInput = RRF "InputEmail.ftlh" uiFeedback
 email = userInput.mail
-Log "@ " __________
+Log "@info User mail ++++++++++++++++++++++" email
 Call __________#__________ 
 Log "@ " __________
 When 
