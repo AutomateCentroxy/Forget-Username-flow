@@ -2,7 +2,9 @@ Flow org.gluu.agama.forgetusername
      Basepath ""
 // Create  variable for UCreate  variable for UI feedbackI feedback
 uiFeedback = {}
-RRF "__________" 
+// userInput
+userInput = RRF "InputEmail.ftlh" uiFeedback
+email = userInput.mail
 Log "@ " __________
 Call __________#__________ 
 Log "@ " __________
