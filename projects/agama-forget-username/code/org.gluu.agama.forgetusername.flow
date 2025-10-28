@@ -18,7 +18,7 @@ When userData is not null
      sendMailed = Call forgetusernameService sendUsernameEmail email username lang
      Log "@info Email send to user++++"
      RRF "acknowledgementEmail.ftlh" uiFeedback
-     Finish usernamee
+     Finish username
 Otherwise
      // "Invalid Email, Please Try Again!"
      uiFeedback.errorMessage = "Invalid Email, Please Try Again!"
