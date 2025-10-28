@@ -1,7 +1,7 @@
 package org.gluu.agama.senduser;
 
 import java.util.Map;
-import org.gluu.agama.forgetusername.ansForgetUsername;
+import org.gluu.agama.forgetusername.jansForgetUsername;
 
 public abstract class SendUsername {
 
