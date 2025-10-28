@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.gluu.agama.senduser.sendUsernam;
+import org.gluu.agama.senduser.sendUsername;
 
 import org.gluu.agama.smtp.*; // your localized email templates
 
@@ -21,7 +21,7 @@ public class jansForgetUsername {
 
     private static final String UID = "uid";
     private static final String INUM_ATTR = "inum";
-    private static final String GIVEN_NAME = "givenName";
+    private static final String LANG = "lang";
     private static final String MAIL = "mail";
 
     /**
@@ -45,9 +45,9 @@ public class jansForgetUsername {
         Map<String, String> userMap = new HashMap<>();
         userMap.put("uid", userService.getAttribute(user, UID));
         userMap.put("inum", userService.getAttribute(user, INUM_ATTR));
-        userMap.put("name", userService.getAttribute(user, GIVEN_NAME));
+
         userMap.put("email", email);
-        userMap.put("lang", userService.getAttribute(user, "preferredLanguage", "en"));
+        userMap.put("lang", userService.getAttribute(user, LANG));
 
         return userMap;
     }
