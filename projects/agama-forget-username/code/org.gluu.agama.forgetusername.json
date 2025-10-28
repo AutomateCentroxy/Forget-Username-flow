@@ -146,7 +146,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true
+			"selected": false
 		},
 		{
 			"id": "logNode-d0ae38e2-b3be-4075-bec8-11c50fa8b3a3",
@@ -164,8 +164,8 @@
 				},
 				"previousNodeId": "assignmentNode-bae387c0-b0f1-43cc-8e77-fd5859d536dc",
 				"agamaData": {
-					"logMessage": "",
-					"logLevel": "",
+					"logMessage": "\"User mail ++++++++++++++++++++++\" email",
+					"logLevel": "info",
 					"nodeIcon": "octicon:log-16",
 					"nodeColor": "",
 					"titleColor": "",
@@ -178,7 +178,8 @@
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": true
 		},
 		{
 			"id": "callNode-e5b55d7f-da21-4437-a525-6a6728cb6f3e",
@@ -832,8 +833,8 @@
 		}
 	],
 	"viewport": {
-		"x": -48.7362406114288,
-		"y": 131.6749898120892,
-		"zoom": 0.7834527837870858
+		"x": -380.989332683037,
+		"y": 104.42929946046026,
+		"zoom": 1.0233176467502172
 	}
 }
