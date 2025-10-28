@@ -10,6 +10,6 @@ public abstract class SendUsername {
     public abstract boolean sendUsernameEmail(String to, String userName, String lang);
 
     public static SendUsername getInstance() {
-        return JansForgetUsername.getInstance(); // use the singleton
+        return ansForgetUsername.getInstance(); // use the singleton
     }
 }
