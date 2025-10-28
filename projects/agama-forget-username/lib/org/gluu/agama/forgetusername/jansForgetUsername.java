@@ -9,37 +9,32 @@ import io.jans.service.cdi.util.CdiUtil;
 import io.jans.as.common.service.common.ConfigurationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.gluu.agama.senduser.sendUsername;
+import org.gluu.agama.smtp.*; // localized email templates
 
 import java.util.HashMap;
 import java.util.Map;
-import org.gluu.agama.smtp.*; // localized email templates
 
 public class jansForgetUsername {
 
-    private static final Logger logger = LoggerFactory.getLogger(FlowService.class);
-    private static jansForgetUsername INSTANCE; // <--- singleton instance
+    private static final Logger logger = LoggerFactory.getLogger(jansForgetUsername.class);
 
     private static final String UID = "uid";
     private static final String INUM_ATTR = "inum";
     private static final String LANG = "lang";
     private static final String MAIL = "mail";
 
-    // Default constructor (required by Agama)
-    public jansForgetUsername() {}
-
-    // Singleton accessor
-    public static synchronized jansForgetUsername getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new jansForgetUsername();
-        }
-        return INSTANCE;
+    // Default constructor (Agama requires this)
+    public jansForgetUsername() {
     }
 
     private UserService getUserService() {
         return CdiUtil.bean(UserService.class);
     }
 
+    /**
+     * Fetch user details by email.
+     * Returns a map containing uid, inum, email, and lang attributes.
+     */
     public Map<String, String> getUserEntityByMail(String email) {
         UserService userService = getUserService();
         User user = null;
@@ -64,6 +59,9 @@ public class jansForgetUsername {
         return userMap;
     }
 
+    /**
+     * Send the username to the given email address, localized by language.
+     */
     public boolean sendUsernameEmail(String to, String username, String lang) {
         try {
             ConfigurationService configService = CdiUtil.bean(ConfigurationService.class);
@@ -101,10 +99,11 @@ public class jansForgetUsername {
                     htmlBody
             );
 
-            if (sent)
-                logger.info("Username email sent successfully to {}", to);
-            else
-                logger.error("Failed to send username email to {}", to);
+            if (sent) {
+                logger.info("✅ Username email sent successfully to {}", to);
+            } else {
+                logger.error("❌ Failed to send username email to {}", to);
+            }
 
             return sent;
 
