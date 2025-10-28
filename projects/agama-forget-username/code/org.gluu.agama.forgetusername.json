@@ -541,7 +541,7 @@
 				},
 				"previousNodeId": "assignmentNode-6739a882-5358-49fe-9a50-f3237250d3a4",
 				"agamaData": {
-					"javaClassName": "org.gluu.agama.usernameclass.usernameResendclass",
+					"javaClassName": "org.gluu.agama.usernameclass.UsernameResendclass",
 					"javaMethodName": "getInstance",
 					"javaVariableName": "",
 					"exceptionVariableField": "",
@@ -885,8 +885,8 @@
 		}
 	],
 	"viewport": {
-		"x": -669.6666870117188,
-		"y": -5,
-		"zoom": 2
+		"x": 0,
+		"y": 0,
+		"zoom": 1
 	}
 }
