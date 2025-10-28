@@ -31,7 +31,7 @@ public class jansForgetUsername {
     // Singleton accessor
     public static synchronized jansForgetUsername getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new ansForgetUsername();
+            INSTANCE = new jansForgetUsername();
         }
         return INSTANCE;
     }
