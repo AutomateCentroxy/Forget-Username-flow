@@ -27,9 +27,6 @@ public class jansForgetUsername {
     public jansForgetUsername() {
     }
 
-    public static jansForgetUsername getInstance() {
-        return new jansForgetUsername();
-    }
 
     private UserService getUserService() {
         return CdiUtil.bean(UserService.class);
