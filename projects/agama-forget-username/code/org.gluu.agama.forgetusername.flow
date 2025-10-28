@@ -12,8 +12,8 @@ userData = Call forgetusernameService getUserEntityByMail email
 // "users details+++++++"
 Log "@info users details+++++++" userData
 When userData is not null
-     usernamee = userData.uid
-     langg = userData.lang
+     username = userData.uid
+     lang = userData.lang
      Log "@info users details++++++++++++" usernamee langg
      sendMailed = Call forgetusernameService sendUsernameEmail email usernamee langg
      Log "@info Email send to user++++"
