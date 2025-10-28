@@ -1,4 +1,4 @@
-package org.gluu.agama.newuser;
+package org.gluu.agama.senduse.sendUsername;
 
 import java.util.HashMap;
 import java.util.Map;
