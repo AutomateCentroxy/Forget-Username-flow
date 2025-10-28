@@ -2,8 +2,8 @@ package org.gluu.agama.forgetusername;
 
 import io.jans.as.common.model.common.User;
 import io.jans.as.common.service.common.UserService;
-import io.jans.service.MailService;
 import io.jans.model.SmtpConfiguration;
+import io.jans.service.MailService;
 import io.jans.service.cdi.util.CdiUtil;
 import io.jans.as.common.service.common.ConfigurationService;
 import org.slf4j.Logger;
@@ -11,8 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import org.gluu.agama.smtp.*; // Localized email templates
+import org.gluu.agama.smtp.*; // your localized email templates
 
 public class jansForgetUsername {
 
@@ -20,12 +19,9 @@ public class jansForgetUsername {
 
     private static final String UID = "uid";
     private static final String INUM_ATTR = "inum";
-    private static final String LANG = "preferredLanguage";
+    private static final String LANG = "lang";
     private static final String MAIL = "mail";
 
-    /**
-     * Fetch user details by email.
-     */
     public Map<String, String> getUserEntityByMail(String email) {
         UserService userService = CdiUtil.bean(UserService.class);
         User user = null;
@@ -45,15 +41,11 @@ public class jansForgetUsername {
         userMap.put("uid", userService.getAttribute(user, UID));
         userMap.put("inum", userService.getAttribute(user, INUM_ATTR));
         userMap.put("email", email);
-        userMap.put("lang", userService.getAttribute(user, LANG, "en"));
+        userMap.put("lang", userService.getAttribute(user, LANG));
 
-        logger.info("Fetched user data for {} -> uid: {}, lang: {}", email, userMap.get("uid"), userMap.get("lang"));
         return userMap;
     }
 
-    /**
-     * Send username email using localized templates.
-     */
     public boolean sendUsernameEmail(String to, String username, String lang) {
         try {
             ConfigurationService configService = CdiUtil.bean(ConfigurationService.class);
@@ -64,10 +56,8 @@ public class jansForgetUsername {
                 return false;
             }
 
-            // Normalize language
             String preferredLang = (lang != null && !lang.isEmpty()) ? lang.toLowerCase() : "en";
 
-            // Select localized template
             Map<String, String> templateData;
             switch (preferredLang) {
                 case "ar": templateData = EmailUsernameAr.get(username); break;
@@ -93,11 +83,10 @@ public class jansForgetUsername {
                     htmlBody
             );
 
-            if (sent) {
+            if (sent)
                 logger.info("Username email sent successfully to {}", to);
-            } else {
+            else
                 logger.error("Failed to send username email to {}", to);
-            }
 
             return sent;
 
