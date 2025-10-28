@@ -1,1 +1,20 @@
-{}
+{
+    "agama-forget-username": {
+        "projectName": "agama-forget-username",
+        "description": "agama-forget-username",
+        "type": "community",
+        "author": "AutomateCentroxy",
+        "version": "0.0.1",
+        "authorWebsite": "https://github.com/AutomateCentroxy/Forget-Username-flow",
+        "githubUri": "https://github.com/AutomateCentroxy/Forget-Username-flow",
+        "license": "apache-2.0",
+        "lastUpdated": "1761643127187",
+        "tags": [
+            "jans",
+            "community",
+            "authentication"
+        ],
+        "noDirectLaunch": [],
+        "configs": {}
+    }
+}
