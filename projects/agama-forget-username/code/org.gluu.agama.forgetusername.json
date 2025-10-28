@@ -453,14 +453,14 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true
+			"selected": false
 		},
 		{
 			"id": "logNode-a06b25e3-c793-4e7a-9c5e-3f9f75faef46",
 			"type": "logNode",
 			"position": {
-				"x": 3030,
-				"y": 288
+				"x": 2908.443876319012,
+				"y": 286.66421842108804
 			},
 			"data": {
 				"id": "logNode-a06b25e3-c793-4e7a-9c5e-3f9f75faef46",
@@ -471,8 +471,8 @@
 				},
 				"previousNodeId": "callNode-185898c1-8236-479b-87fc-6d4a35276578",
 				"agamaData": {
-					"logMessage": "",
-					"logLevel": "",
+					"logMessage": "\"Email send to user++++\"",
+					"logLevel": "info",
 					"nodeIcon": "octicon:log-16",
 					"nodeColor": "",
 					"titleColor": "",
@@ -485,14 +485,16 @@
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false,
+			"dragging": false
 		},
 		{
 			"id": "rrfNode-e8cb157c-58cd-4ed3-8085-8d66d9181745",
 			"type": "rrfNode",
 			"position": {
-				"x": 3280,
-				"y": 288
+				"x": 3219.8898289489616,
+				"y": 286.66421842108804
 			},
 			"data": {
 				"id": "rrfNode-e8cb157c-58cd-4ed3-8085-8d66d9181745",
@@ -505,20 +507,23 @@
 				"agamaData": {
 					"assignments": [],
 					"nodeIcon": "ph:globe-simple",
-					"templatePath": "",
+					"templatePath": "acknowledgementEmail.ftlh",
 					"asssignedVariableName": "",
 					"nodeColor": "",
 					"titleColor": "",
 					"descColor": "",
 					"displayName": "",
 					"hasComment": true,
-					"comment": ""
+					"comment": "",
+					"arguments": "uiFeedback"
 				}
 			},
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false,
+			"dragging": false
 		},
 		{
 			"id": "callNode-0db16cb3-7dc2-4a52-a96b-a9633f0a8e4b",
@@ -581,14 +586,16 @@
 					"hasComment": true,
 					"comment": "",
 					"flowfilename": "",
-					"returnVariable": "",
-					"nodeIcon": "material-symbols:line-end-square-rounded"
+					"returnVariable": "{ userId: \"as9233Qz\", property1: \"value1\"}",
+					"nodeIcon": "material-symbols:line-end-square-rounded",
+					"finishMode": "withSuccess"
 				}
 			},
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": true
 		}
 	],
 	"edges": [
