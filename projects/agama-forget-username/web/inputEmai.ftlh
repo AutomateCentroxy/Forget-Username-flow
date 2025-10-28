@@ -3,49 +3,15 @@
 <html lang="en">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Update User Profile
 	</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></head>
-<body>
-
-  
-	
-	
-	
-	
-  
-  
-	<div class="registration-container">
-	  <div align="center" class="flex">
-		<img src="https://gluu.org/wp-content/uploads/2020/12/logo.png" id="inh1m">
-	  </div>
-	  <div class="header">
-		<i class="fas fa-user-plus">
+<body><div class="registration-container"><div align="center" class="flex"><img src="https://gluu.org/wp-content/uploads/2020/12/logo.png" id="inh1m"></div><div class="header"><i class="fas fa-user-plus">
 		</i> Update User Profile
-	  </div>
-	  <!-- Error Message Block -->
+	  </div><!-- Error Message Block -->
 	  [#if errorMessage?has_content]
-	  <div role="alert" align="center" class="alert alert-danger mt-3 error">
-		<p>${errorMessage} 
-		</p>
-	  </div>
+	  <div role="alert" align="center" class="alert alert-danger mt-3 error"><p>${errorMessage} 
+		</p></div>
 	  [/#if]
-	  <div class="content">
-		<p class="text-center">Search user by username
-		</p>
-		<form method="post" enctype="application/x-www-form-urlencoded" id="searchUserForm">
-		  <div class="form-group">
-			<label class="form-label">Username: <span class="required">*</span></label>
-			<input type="text" id="uid" name="uid" pattern="[A-Za-z]+" title="Name should contain only alphabets" required="" placeholder="Choose a username" class="form-control">
-		  </div>
-		  <input type="hidden" id="formType" name="formType" value="searchUserForm">
-		  <div class="buttons">
-			<button type="submit" class="btn btn-primary">Search</button>
-		  </div>
-		</form>
-	  </div>
-	</div>
-  
-  
-  
-</body>
+	  <div class="content"><p class="text-center">Search user by username
+		</p><form method="post" enctype="application/x-www-form-urlencoded" id="searchUserForm"><div class="form-group"><label class="form-label">Enter your Email: <span class="required">*</span></label><input type="text" id="uid" name="uid" pattern="[A-Za-z]+" title="Name should contain only alphabets" required="" placeholder="Choose a username" class="form-control"></div><input type="hidden" id="formType" name="formType" value="searchUserForm"><div class="buttons"><button type="submit" class="btn btn-primary">Search</button></div></form></div></div></body>
 <style>
 	body {
 	  font-family: Arial, sans-serif;
