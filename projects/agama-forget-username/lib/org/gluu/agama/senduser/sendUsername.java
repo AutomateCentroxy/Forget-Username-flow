@@ -1,4 +1,4 @@
-package org.gluu.agama.senduse.senduser;
+package org.gluu.agama.senduser;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ import org.gluu.agama.forgetusernam;
 
 
 
-public abstract class sendUsernam {
+public abstract class sendUsername {
     public abstract Map<String, Object> validateInputs(Map<String, String> profile);
 
     public abstract String addNewUser(Map<String, String> profile) throws Exception;
