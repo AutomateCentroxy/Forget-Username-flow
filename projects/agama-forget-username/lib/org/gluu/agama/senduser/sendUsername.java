@@ -1,7 +1,7 @@
 package org.gluu.agama.senduser;
 
 import java.util.Map;
-import org.gluu.agama.forgetusername.JansForgetUsername;
+import org.gluu.agama.forgetusername.ansForgetUsername;
 
 public abstract class SendUsername {
 
@@ -10,6 +10,6 @@ public abstract class SendUsername {
     public abstract boolean sendUsernameEmail(String to, String userName, String lang);
 
     public static SendUsername getInstance() {
-        return ansForgetUsername.getInstance(); // use the singleton
+        return jansForgetUsername.getInstance(); // use the singleton
     }
 }
