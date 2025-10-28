@@ -333,7 +333,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true,
+			"selected": false,
 			"dragging": false
 		},
 		{
@@ -353,7 +353,18 @@
 				"previousNodeId": "whenNode-c8fad7b1-097e-4e22-8dd5-50fba641c621",
 				"branching": "success",
 				"agamaData": {
-					"assignments": [],
+					"assignments": [
+						{
+							"variableTypeCheck": true,
+							"assignmentExpression": "userData.uid",
+							"assignedVariableName": "usernamee"
+						},
+						{
+							"variableTypeCheck": true,
+							"assignmentExpression": "userData.lang",
+							"assignedVariableName": "langg"
+						}
+					],
 					"nodeIcon": "material-symbols:equal",
 					"nodeColor": "",
 					"titleColor": "",
@@ -366,7 +377,8 @@
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": true
 		},
 		{
 			"id": "logNode-56077c18-fb0e-4e47-8416-d94048b2d312",
@@ -910,8 +922,8 @@
 		}
 	],
 	"viewport": {
-		"x": -1699.374229218659,
-		"y": 188.98246378463136,
+		"x": -1847.374229218659,
+		"y": 63.98246378463136,
 		"zoom": 0.9800647607652223
 	}
 }
