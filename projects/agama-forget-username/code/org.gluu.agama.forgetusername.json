@@ -586,9 +586,9 @@
 					"hasComment": true,
 					"comment": "",
 					"flowfilename": "",
-					"returnVariable": "{ userId: \"as9233Qz\", property1: \"value1\"}",
+					"returnVariable": "usernamee",
 					"nodeIcon": "material-symbols:line-end-square-rounded",
-					"finishMode": "withSuccess"
+					"finishMode": "withVariable"
 				}
 			},
 			"measured": {
