@@ -15,7 +15,7 @@ When userData is not null
      usernamee = userData.uid
      langg = userData.lang
      Log "@info users details++++++++++++" usernamee langg
-     Call __________#__________ 
+     sendMailed = Call forgetusernameService sendUsernameEmail email usernamee langg
      Log "@ " __________
      RRF "__________" 
      Finish __________
