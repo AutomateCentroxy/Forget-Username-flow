@@ -3,4 +3,8 @@ Flow org.gluu.agama.forgetusername
 // Create  variable for UCreate  variable for UI feedbackI feedback
 uiFeedback = {}
 RRF "__________" 
+Log "@ " __________
 Call __________#__________ 
+Log "@ " __________
+When 
+Otherwise
