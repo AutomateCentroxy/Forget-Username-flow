@@ -16,7 +16,8 @@
         ],
         "noDirectLaunch": [],
         "configs": {
-            "org.gluu.agama.forgetusername": {}
+            "org.gluu.agama.forgetusername": {},
+            "senduser": {}
         },
         "name": "agama-forget-username"
     }
