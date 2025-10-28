@@ -2,9 +2,9 @@ package org.gluu.agama.smtp;
 
 import java.util.Map;
 
-class EmailWelcomeEn {
+class EmailUsernameEn {
 
-    static Map<String, String> get(String userName) {
+    static Map<String, String> get(String username) {
 
         String html = """
 <table role="presentation" cellspacing="0" cellpadding="0" width="100%" style="background-color:#F2F4F6;margin:0;padding:0;width:100%;">
