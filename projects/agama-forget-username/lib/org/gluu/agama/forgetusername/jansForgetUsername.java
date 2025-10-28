@@ -10,6 +10,7 @@ import io.jans.as.common.service.common.ConfigurationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.gluu.agama.smtp.*; // localized email templates
+import org.gluu.agam.senduser.sendUsername;
 
 import java.util.HashMap;
 import java.util.Map;
