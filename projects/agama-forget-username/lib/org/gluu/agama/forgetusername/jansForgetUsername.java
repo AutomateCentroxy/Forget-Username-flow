@@ -1,4 +1,4 @@
-package org.gluu.agama.forgetusernam;
+package org.gluu.agama.forgetusername;
 
 import io.jans.as.common.model.common.User;
 import io.jans.as.common.service.common.UserService;
@@ -11,17 +11,16 @@ import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.gluu.agama.senduser.sendUsername;
 
-import org.gluu.agama.smtp.*; // your localized email templates
+import org.gluu.agama.smtp.*; // Localized email templates
 
 public class jansForgetUsername {
 
-    private static final Logger logger = LoggerFactory.getLogger(JansUserRegistration.class);
+    private static final Logger logger = LoggerFactory.getLogger(jansForgetUsername.class);
 
     private static final String UID = "uid";
     private static final String INUM_ATTR = "inum";
-    private static final String LANG = "lang";
+    private static final String LANG = "preferredLanguage";
     private static final String MAIL = "mail";
 
     /**
@@ -45,10 +44,10 @@ public class jansForgetUsername {
         Map<String, String> userMap = new HashMap<>();
         userMap.put("uid", userService.getAttribute(user, UID));
         userMap.put("inum", userService.getAttribute(user, INUM_ATTR));
-
         userMap.put("email", email);
-        userMap.put("lang", userService.getAttribute(user, LANG));
+        userMap.put("lang", userService.getAttribute(user, LANG, "en"));
 
+        logger.info("Fetched user data for {} -> uid: {}, lang: {}", email, userMap.get("uid"), userMap.get("lang"));
         return userMap;
     }
 
@@ -94,10 +93,11 @@ public class jansForgetUsername {
                     htmlBody
             );
 
-            if (sent)
+            if (sent) {
                 logger.info("Username email sent successfully to {}", to);
-            else
+            } else {
                 logger.error("Failed to send username email to {}", to);
+            }
 
             return sent;
 
