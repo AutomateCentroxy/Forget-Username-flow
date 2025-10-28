@@ -9,13 +9,13 @@ import io.jans.service.cdi.util.CdiUtil;
 import io.jans.as.common.service.common.ConfigurationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.gluu.agama.smtp.*; // localized email templates
+import org.gluu.agama.smtp.*;
 import org.gluu.agama.usernameclass.UsernameResendclass;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class JansForgetUsername {
+public class JansForgetUsername extends UsernameResendclass {   // ✅ FIX HERE
 
     private static final Logger logger = LoggerFactory.getLogger(FlowService.class);
 
@@ -24,21 +24,12 @@ public class JansForgetUsername {
     private static final String LANG = "lang";
     private static final String MAIL = "mail";
 
-    // Default constructor (Agama requires this)
     public JansForgetUsername() {
     }
 
-
-    private UserService getUserService() {
-        return CdiUtil.bean(UserService.class);
-    }
-
-    /**
-     * Fetch user details by email.
-     * Returns a map containing uid, inum, email, and lang attributes.
-     */
+    @Override
     public Map<String, String> getUserEntityByMail(String email) {
-        UserService userService = getUserService();
+        UserService userService = CdiUtil.bean(UserService.class);
         User user = null;
 
         try {
@@ -61,9 +52,7 @@ public class JansForgetUsername {
         return userMap;
     }
 
-    /**
-     * Send the username to the given email address, localized by language.
-     */
+    @Override
     public boolean sendUsernameEmail(String to, String username, String lang) {
         try {
             ConfigurationService configService = CdiUtil.bean(ConfigurationService.class);
