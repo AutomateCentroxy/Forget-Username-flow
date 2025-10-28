@@ -1,20 +1,15 @@
 package org.gluu.agama.senduser;
 
 import java.util.Map;
-import org.gluu.agama.forgetusername.jansForgetUsername;
+import org.gluu.agama.forgetusername.JansForgetUsername;
 
-public abstract class forgetusername {
+public abstract class ForgetUsername {
 
-  
     public abstract Map<String, String> getUserEntityByMail(String mail);
 
-    
     public abstract boolean sendUsernameEmail(String to, String userName, String lang);
 
-    /**
-     * Factory method to return an instance of jansForgetUsername.
-     */
-    public static jansForgetUsername getInstance() {
-        return new jansForgetUsername();
+    public static JansForgetUsername getInstance() {
+        return JansForgetUsername.getInstance(); // <--- use the singleton
     }
 }
