@@ -16,7 +16,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-import org.gluu.agama.newuser.NewUserRegistration;
+import org.gluu.agama.senduser.sendUsernam;
 import io.jans.agama.engine.script.LogUtils;
 import java.io.IOException;
 import io.jans.as.common.service.common.ConfigurationService;
