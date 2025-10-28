@@ -15,6 +15,9 @@
             "authentication"
         ],
         "noDirectLaunch": [],
-        "configs": {}
+        "configs": {
+            "org.gluu.agama.forgetusername": {}
+        },
+        "name": "agama-forget-username"
     }
 }
