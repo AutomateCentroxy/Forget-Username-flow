@@ -16,9 +16,10 @@ When userData is not null
      langg = userData.lang
      Log "@info users details++++++++++++" usernamee langg
      sendMailed = Call forgetusernameService sendUsernameEmail email usernamee langg
-     Log "@ " __________
-     RRF "__________" 
-     Finish __________
+     Log "@info Email send to user++++"
+     RRF "acknowledgementEmail.ftlh" uiFeedback
+     it_xzaul = {success:true, data: { userId: "as9233Qz", property1: "value1"}}
+     Finish it_xzaul
 Otherwise
      // "Invalid Email, Please Try Again!"
      uiFeedback.errorMessage = "Invalid Email, Please Try Again!"
