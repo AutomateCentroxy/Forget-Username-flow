@@ -11,19 +11,35 @@ import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.gluu.agama.smtp.*; // your localized email templates
+import org.gluu.agama.smtp.*; // localized email templates
 
-public class jansForgetUsername {
+public class JansForgetUsername {
 
-    private static final Logger logger = LoggerFactory.getLogger(jansForgetUsername.class);
+    private static final Logger logger = LoggerFactory.getLogger(JansForgetUsername.class);
+    private static JansForgetUsername INSTANCE; // <--- singleton instance
 
     private static final String UID = "uid";
     private static final String INUM_ATTR = "inum";
     private static final String LANG = "lang";
     private static final String MAIL = "mail";
 
+    // Default constructor (required by Agama)
+    public JansForgetUsername() {}
+
+    // Singleton accessor
+    public static synchronized JansForgetUsername getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new JansForgetUsername();
+        }
+        return INSTANCE;
+    }
+
+    private UserService getUserService() {
+        return CdiUtil.bean(UserService.class);
+    }
+
     public Map<String, String> getUserEntityByMail(String email) {
-        UserService userService = CdiUtil.bean(UserService.class);
+        UserService userService = getUserService();
         User user = null;
 
         try {
