@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.gluu.agama.senduser.sendUsernam;
 
 import org.gluu.agama.smtp.*; // your localized email templates
 
