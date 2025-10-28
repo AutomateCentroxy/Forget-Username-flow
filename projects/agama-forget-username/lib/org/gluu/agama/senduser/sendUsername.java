@@ -9,7 +9,7 @@ public abstract class sendUsername {
 
     public abstract boolean sendUsernameEmail(String to, String usernam, String lang);
 
-    public static SendUsername getInstance() {
+    public static endUsername getInstance() {
         return new jansForgetUsername();
     }
 }
