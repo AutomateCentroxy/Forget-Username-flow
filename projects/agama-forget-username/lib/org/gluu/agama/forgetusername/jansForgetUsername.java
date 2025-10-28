@@ -1,4 +1,4 @@
-package org.gluu.agama.newregistration;
+package org.gluu.agama.forgetusernam;
 
 import io.jans.as.common.model.common.User;
 import io.jans.as.common.service.common.EncryptionService;
