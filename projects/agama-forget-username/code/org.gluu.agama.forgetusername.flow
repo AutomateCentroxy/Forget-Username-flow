@@ -14,7 +14,7 @@ Log "@info users details+++++++" userData
 When userData is not null
      usernamee = userData.uid
      langg = userData.lang
-     Log "@ " __________
+     Log "@info users details++++++++++++" usernamee langg
      Call __________#__________ 
      Log "@ " __________
      RRF "__________" 
