@@ -1,5 +1,6 @@
 package org.gluu.agama.forgetusername;
 
+import io.jans.agama.engine.service.FlowService;
 import io.jans.as.common.model.common.User;
 import io.jans.as.common.service.common.UserService;
 import io.jans.model.SmtpConfiguration;
@@ -8,6 +9,7 @@ import io.jans.service.cdi.util.CdiUtil;
 import io.jans.as.common.service.common.ConfigurationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.gluu.agama.senduser.sendUsername;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +17,7 @@ import org.gluu.agama.smtp.*; // localized email templates
 
 public class JansForgetUsername {
 
-    private static final Logger logger = LoggerFactory.getLogger(JansForgetUsername.class);
+    private static final Logger logger = LoggerFactory.getLogger(FlowService.class);
     private static JansForgetUsername INSTANCE; // <--- singleton instance
 
     private static final String UID = "uid";
