@@ -252,7 +252,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true
+			"selected": false
 		},
 		{
 			"id": "whenNode-c8fad7b1-097e-4e22-8dd5-50fba641c621",
@@ -273,7 +273,14 @@
 					"variableField": "",
 					"valueField": "",
 					"conditionInputField": "",
-					"conditions": [],
+					"conditions": [
+						{
+							"variable": "userData",
+							"operator": "is not",
+							"dataValue": "null",
+							"combinator": "none"
+						}
+					],
 					"nodeIcon": "ph:swap",
 					"nodeColor": "",
 					"titleColor": "",
@@ -286,14 +293,15 @@
 			"measured": {
 				"width": 110,
 				"height": 60
-			}
+			},
+			"selected": true
 		},
 		{
 			"id": "assignmentNode-6f2abab1-477c-4b4e-ad9b-3fa8a4123be3",
 			"type": "assignmentNode",
 			"position": {
-				"x": 2030,
-				"y": -162
+				"x": 2203.457925236763,
+				"y": -151.79659263313158
 			},
 			"data": {
 				"id": "assignmentNode-6f2abab1-477c-4b4e-ad9b-3fa8a4123be3",
@@ -318,7 +326,9 @@
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false,
+			"dragging": false
 		},
 		{
 			"id": "assignmentNode-f57a6a5c-bfe6-41d2-8d5a-66bcc34ba174",
@@ -894,8 +904,8 @@
 		}
 	],
 	"viewport": {
-		"x": -1445.374229218659,
-		"y": 199.98246378463136,
+		"x": -1699.374229218659,
+		"y": 188.98246378463136,
 		"zoom": 0.9800647607652223
 	}
 }
