@@ -415,7 +415,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true
+			"selected": false
 		},
 		{
 			"id": "logNode-eac78c5f-7b9a-4f3d-bbe7-50e3f1a04ccf",
@@ -433,8 +433,8 @@
 				},
 				"previousNodeId": "assignmentNode-5cf9cb3a-1b90-42cc-b872-892829a375ca",
 				"agamaData": {
-					"logMessage": "",
-					"logLevel": "",
+					"logMessage": "\"users details++++++++++++\" username lang",
+					"logLevel": "info",
 					"nodeIcon": "octicon:log-16",
 					"nodeColor": "",
 					"titleColor": "",
@@ -447,7 +447,8 @@
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false
 		},
 		{
 			"id": "callNode-922c042b-f839-446d-8ea1-da9b627f2da3",
@@ -465,25 +466,31 @@
 				},
 				"previousNodeId": "logNode-eac78c5f-7b9a-4f3d-bbe7-50e3f1a04ccf",
 				"agamaData": {
-					"javaClassName": "",
-					"javaMethodName": "",
+					"javaClassName": "forgetusernameService",
+					"javaMethodName": "sendUsernameEmail",
 					"javaVariableName": "",
 					"exceptionVariableField": "",
 					"callType": "Call static method",
-					"arguments": [],
+					"arguments": [
+						"email",
+						"username",
+						"lang"
+					],
 					"nodeIcon": "material-symbols:code",
 					"nodeColor": "",
 					"titleColor": "",
 					"descColor": "",
 					"displayName": "",
 					"hasComment": true,
-					"comment": ""
+					"comment": "",
+					"asssignedVariableName": "sendMailed"
 				}
 			},
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false
 		},
 		{
 			"id": "logNode-574fc86f-300c-4541-883f-05ed40c38060",
@@ -501,8 +508,8 @@
 				},
 				"previousNodeId": "callNode-922c042b-f839-446d-8ea1-da9b627f2da3",
 				"agamaData": {
-					"logMessage": "",
-					"logLevel": "",
+					"logMessage": "\"Email send to user++++\"",
+					"logLevel": "info",
 					"nodeIcon": "octicon:log-16",
 					"nodeColor": "",
 					"titleColor": "",
@@ -515,7 +522,8 @@
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false
 		},
 		{
 			"id": "rrfNode-b4a4300d-64d4-4f89-8f4c-01cb3fdd2b27",
@@ -535,20 +543,22 @@
 				"agamaData": {
 					"assignments": [],
 					"nodeIcon": "ph:globe-simple",
-					"templatePath": "",
+					"templatePath": "acknowledgementEmail.ftlh",
 					"asssignedVariableName": "",
 					"nodeColor": "",
 					"titleColor": "",
 					"descColor": "",
 					"displayName": "",
 					"hasComment": true,
-					"comment": ""
+					"comment": "",
+					"arguments": "uiFeedback"
 				}
 			},
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false
 		},
 		{
 			"id": "finishNode-ce7d62ca-b4fd-4bde-bd7d-1c41b5931c2e",
@@ -573,14 +583,16 @@
 					"hasComment": true,
 					"comment": "",
 					"flowfilename": "",
-					"returnVariable": "",
-					"nodeIcon": "material-symbols:line-end-square-rounded"
+					"returnVariable": "username",
+					"nodeIcon": "material-symbols:line-end-square-rounded",
+					"finishMode": "withVariable"
 				}
 			},
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": true
 		}
 	],
 	"edges": [
@@ -871,8 +883,8 @@
 		}
 	],
 	"viewport": {
-		"x": -1314,
-		"y": 199,
+		"x": -2544,
+		"y": 57,
 		"zoom": 1
 	}
 }
