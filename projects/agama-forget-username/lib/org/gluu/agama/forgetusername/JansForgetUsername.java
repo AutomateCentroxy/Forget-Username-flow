@@ -98,7 +98,7 @@ public class JansForgetUsername extends UsernameResendclass {
             MailService mailService = CdiUtil.bean(MailService.class);
 
             // FIX — Groovy parser issue solved
-            def sent = mailService.sendMailSigned(
+            boolean sent = mailService.sendMailSigned(
                 smtpConfig.getFromEmailAddress(),
                 smtpConfig.getFromName(),
                 to,
