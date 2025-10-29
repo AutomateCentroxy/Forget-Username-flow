@@ -25,7 +25,7 @@ public class JansForgetUsername extends UsernameResendclass {
     private static final String LAST_NAME = "sn";
 
     // ✅ Helper method to get user by any attribute (like UID, MAIL, INUM)
-    private User getUser(String attributeName, String value) {
+    public User getUser(String attributeName, String value) {
         UserService userService = CdiUtil.bean(UserService.class);
         return userService.getUserByAttribute(attributeName, value, true);
     }
