@@ -62,18 +62,18 @@ public class JansForgetUsername extends UsernameResendclass {
         logger.info("There is {} local account for {}", local ? "a" : "no", email);
 
         if (local) {
-            String userEmail = getSingleValuedAttr(user, MAIL);
+            String uid = getSingleValuedAttr(user, UID);
+            //String userEmail = getSingleValuedAttr(user, MAIL);
             String inum = getSingleValuedAttr(user, INUM_ATTR);
             String name = getSingleValuedAttr(user, GIVEN_NAME);
-            String uid = getSingleValuedAttr(user, UID);
-            String displayName = getSingleValuedAttr(user, DISPLAY_NAME);
-            String sn = getSingleValuedAttr(user, LAST_NAME);
+            //String displayName = getSingleValuedAttr(user, DISPLAY_NAME);
+            //String sn = getSingleValuedAttr(user, LAST_NAME);
             String lang = getSingleValuedAttr(user, LANG);
 
             if (name == null) {
-                name = displayName;
-                if (name == null && userEmail != null && userEmail.contains("@")) {
-                    name = userEmail.substring(0, userEmail.indexOf("@"));
+                name = getSingleValuedAttr(user, DISPLAY_NAME);
+                if (name == null && email != null && email.contains("@")) {
+                    name = email.substring(0, email.indexOf("@"));
                 }
             }
 
@@ -81,9 +81,9 @@ public class JansForgetUsername extends UsernameResendclass {
             userMap.put(UID, uid);
             userMap.put(INUM_ATTR, inum);
             userMap.put("name", name);
-            userMap.put("email", userEmail);
-            userMap.put(DISPLAY_NAME, displayName);
-            userMap.put(LAST_NAME, sn);
+            userMap.put("email", email);
+            //userMap.put(DISPLAY_NAME, displayName);
+            //userMap.put(LAST_NAME, sn);
             userMap.put(LANG, lang);
 
             return userMap;
