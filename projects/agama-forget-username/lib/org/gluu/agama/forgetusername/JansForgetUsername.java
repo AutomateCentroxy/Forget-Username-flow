@@ -64,7 +64,7 @@ public class JansForgetUsername extends UsernameResendclass {
 
         if (local) {
             // Try both uid and jansUid (depends on deployment)
-            String uid = getSingleValuedAttr(user, UI);
+            String uid = getSingleValuedAttr(user, UID);
             if (uid == null) {
                 uid = getSingleValuedAttr(user, "jansUid");
             }
