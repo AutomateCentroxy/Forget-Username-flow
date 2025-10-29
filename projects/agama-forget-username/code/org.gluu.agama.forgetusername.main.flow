@@ -14,11 +14,11 @@ Log "@info users details+++++++" userData
 When userData is not null
      username = userData.uid
      lang = userData.lang
-     Log "@ " __________
-     Call __________#__________ 
-     Log "@ " __________
-     RRF "__________" 
-     Finish __________
+     Log "@info users details++++++++++++" username lang
+     sendMailed = Call forgetusernameService#sendUsernameEmail email username lang
+     Log "@info Email send to user++++"
+     RRF "acknowledgementEmail.ftlh" uiFeedback
+     Finish username
 Otherwise
      // "Invalid Email, Please Try Again!"
      uiFeedback.errorMessage = "Invalid Email, Please Try Again!"
