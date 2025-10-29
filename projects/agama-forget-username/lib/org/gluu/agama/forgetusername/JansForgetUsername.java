@@ -15,7 +15,7 @@ import org.gluu.agama.usernameclass.UsernameResendclass;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JansForgetUsername extends UsernameResendclass {   // ✅ FIX HERE
+public class JansForgetUsername extends UsernameResendclass {   // ✅FIX HERE
 
     private static final Logger logger = LoggerFactory.getLogger(FlowService.class);
 
@@ -92,9 +92,9 @@ public class JansForgetUsername extends UsernameResendclass {   // ✅ FIX HERE
             );
 
             if (sent) {
-                logger.info("✅ Username email sent successfully to {}", to);
+                logger.info("Username email sent successfully to {}", to);
             } else {
-                logger.error("❌ Failed to send username email to {}", to);
+                logger.error("Failed to send username email to {}", to);
             }
 
             return sent;
