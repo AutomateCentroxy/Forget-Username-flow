@@ -46,14 +46,14 @@ public class JansForgetUsername extends UsernameResendclass {   // FIX HERE
         Map<String, String> userMap = new HashMap<>();
         
         try {
-            String uid = userService.getAttribute(user, UID);
-            String inum = userService.getAttribute(user, INUM_ATTR);
-            String lang = userService.getAttribute(user, LANG);
+            String uid = user.getAttribute(UID);
+            String inum = user.getAttribute(INUM_ATTR);
+            String lang = user.getAttribute(LANG);
 
             userMap.put("uid", uid != null ? uid : "");
             userMap.put("inum", inum != null ? inum : "");
             userMap.put("email", email);
-            userMap.put("lang", lang != null ? lang : "en");
+            userMap.put("lang", (lang != null && !lang.isEmpty()) ? lang : "en");
         } catch (Exception e) {
             logger.error("Error reading attributes for user {}: {}", email, e.getMessage(), e);
         }
