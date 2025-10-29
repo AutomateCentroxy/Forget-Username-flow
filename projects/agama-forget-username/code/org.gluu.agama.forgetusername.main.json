@@ -66,14 +66,14 @@
 					"descColor": "",
 					"displayName": "",
 					"hasComment": true,
-					"comment": "uiFeedback"
+					"comment": "Create  variable for UCreate  variable for UI feedbackI feedback"
 				}
 			},
 			"measured": {
 				"width": 170,
 				"height": 124
 			},
-			"selected": true
+			"selected": false
 		},
 		{
 			"id": "callNode-71eeaf54-e5d0-44c0-9d1a-297ff271dbf6",
@@ -91,8 +91,8 @@
 				},
 				"previousNodeId": "assignmentNode-cbbea966-78d5-4b08-9741-496005f133b3",
 				"agamaData": {
-					"javaClassName": "",
-					"javaMethodName": "",
+					"javaClassName": "org.gluu.agama.usernameclass.UsernameResendclass",
+					"javaMethodName": "getInstance",
 					"javaVariableName": "",
 					"exceptionVariableField": "",
 					"callType": "Call static method",
@@ -103,13 +103,15 @@
 					"descColor": "",
 					"displayName": "",
 					"hasComment": true,
-					"comment": ""
+					"comment": "forgetusernameService",
+					"asssignedVariableName": "forgetusernameService"
 				}
 			},
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false
 		},
 		{
 			"id": "rrfNode-88e8084b-13f4-4dfd-bfc0-703c9cdbf3b6",
@@ -129,20 +131,22 @@
 				"agamaData": {
 					"assignments": [],
 					"nodeIcon": "ph:globe-simple",
-					"templatePath": "",
-					"asssignedVariableName": "",
+					"templatePath": "InputEmail.ftlh",
+					"asssignedVariableName": "userInput",
 					"nodeColor": "",
 					"titleColor": "",
 					"descColor": "",
 					"displayName": "",
 					"hasComment": true,
-					"comment": ""
+					"comment": "userInput",
+					"arguments": "uiFeedback"
 				}
 			},
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false
 		},
 		{
 			"id": "assignmentNode-600a0f77-7e57-42bb-960f-0984b303c8ca",
@@ -160,7 +164,13 @@
 				},
 				"previousNodeId": "rrfNode-88e8084b-13f4-4dfd-bfc0-703c9cdbf3b6",
 				"agamaData": {
-					"assignments": [],
+					"assignments": [
+						{
+							"variableTypeCheck": true,
+							"assignmentExpression": "userInput.mail",
+							"assignedVariableName": "email"
+						}
+					],
 					"nodeIcon": "material-symbols:equal",
 					"nodeColor": "",
 					"titleColor": "",
@@ -173,7 +183,8 @@
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false
 		},
 		{
 			"id": "logNode-0bf77f62-7e39-4c70-9358-9633df69a9f9",
@@ -191,8 +202,8 @@
 				},
 				"previousNodeId": "assignmentNode-600a0f77-7e57-42bb-960f-0984b303c8ca",
 				"agamaData": {
-					"logMessage": "",
-					"logLevel": "",
+					"logMessage": "\"User mail ++++++++++++++++++++++\" email",
+					"logLevel": "info",
 					"nodeIcon": "octicon:log-16",
 					"nodeColor": "",
 					"titleColor": "",
@@ -205,7 +216,8 @@
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false
 		},
 		{
 			"id": "callNode-e5668cd1-1c77-4b8b-9d99-2a1417b99c1f",
@@ -224,24 +236,28 @@
 				"previousNodeId": "logNode-0bf77f62-7e39-4c70-9358-9633df69a9f9",
 				"agamaData": {
 					"javaClassName": "",
-					"javaMethodName": "",
-					"javaVariableName": "",
+					"javaMethodName": "getUserEntityByMail",
+					"javaVariableName": "uiFeedback",
 					"exceptionVariableField": "",
-					"callType": "Call static method",
-					"arguments": [],
+					"callType": "Call method on instance",
+					"arguments": [
+						"email"
+					],
 					"nodeIcon": "material-symbols:code",
 					"nodeColor": "",
 					"titleColor": "",
 					"descColor": "",
-					"displayName": "",
+					"displayName": "userData",
 					"hasComment": true,
-					"comment": ""
+					"comment": "",
+					"asssignedVariableName": "userData"
 				}
 			},
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false
 		},
 		{
 			"id": "logNode-ba23f452-20e9-472b-aa0c-6fe2d093f2b3",
@@ -259,21 +275,22 @@
 				},
 				"previousNodeId": "callNode-e5668cd1-1c77-4b8b-9d99-2a1417b99c1f",
 				"agamaData": {
-					"logMessage": "",
-					"logLevel": "",
+					"logMessage": "\"users details+++++++\" userData",
+					"logLevel": "info",
 					"nodeIcon": "octicon:log-16",
 					"nodeColor": "",
 					"titleColor": "",
 					"descColor": "",
 					"displayName": "",
 					"hasComment": true,
-					"comment": ""
+					"comment": "\"users details+++++++\""
 				}
 			},
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false
 		},
 		{
 			"id": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30",
@@ -294,7 +311,14 @@
 					"variableField": "",
 					"valueField": "",
 					"conditionInputField": "",
-					"conditions": [],
+					"conditions": [
+						{
+							"variable": "userData",
+							"operator": "is not",
+							"dataValue": "null",
+							"combinator": "none"
+						}
+					],
 					"nodeIcon": "ph:swap",
 					"nodeColor": "",
 					"titleColor": "",
@@ -307,7 +331,8 @@
 			"measured": {
 				"width": 110,
 				"height": 60
-			}
+			},
+			"selected": false
 		},
 		{
 			"id": "assignmentNode-44b51752-fe91-46fa-941c-9cdab3071628",
@@ -326,20 +351,27 @@
 				"previousNodeId": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30",
 				"branching": "otherwise",
 				"agamaData": {
-					"assignments": [],
+					"assignments": [
+						{
+							"variableTypeCheck": true,
+							"assignmentExpression": "\"Invalid Email, Please Try Again!\"",
+							"assignedVariableName": "uiFeedback.errorMessage"
+						}
+					],
 					"nodeIcon": "material-symbols:equal",
 					"nodeColor": "",
 					"titleColor": "",
 					"descColor": "",
 					"displayName": "",
 					"hasComment": true,
-					"comment": ""
+					"comment": "\"Invalid Email, Please Try Again!\""
 				}
 			},
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": false
 		},
 		{
 			"id": "assignmentNode-5cf9cb3a-1b90-42cc-b872-892829a375ca",
@@ -358,7 +390,18 @@
 				"previousNodeId": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30",
 				"branching": "success",
 				"agamaData": {
-					"assignments": [],
+					"assignments": [
+						{
+							"variableTypeCheck": true,
+							"assignmentExpression": "userData.uid",
+							"assignedVariableName": "username"
+						},
+						{
+							"variableTypeCheck": true,
+							"assignmentExpression": "userData.lang",
+							"assignedVariableName": "lang"
+						}
+					],
 					"nodeIcon": "material-symbols:equal",
 					"nodeColor": "",
 					"titleColor": "",
@@ -371,7 +414,8 @@
 			"measured": {
 				"width": 170,
 				"height": 124
-			}
+			},
+			"selected": true
 		},
 		{
 			"id": "logNode-eac78c5f-7b9a-4f3d-bbe7-50e3f1a04ccf",
@@ -827,8 +871,8 @@
 		}
 	],
 	"viewport": {
-		"x": 315.72116278899466,
-		"y": 193.74481813611007,
-		"zoom": 0.6758384551330276
+		"x": -1314,
+		"y": 199,
+		"zoom": 1
 	}
 }
