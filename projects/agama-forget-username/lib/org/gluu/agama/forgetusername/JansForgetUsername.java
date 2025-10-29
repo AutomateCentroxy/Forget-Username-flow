@@ -45,10 +45,10 @@ public class JansForgetUsername extends UsernameResendclass {   // ✅ FIX HERE
 
         Map<String, String> userMap = new HashMap<>();
         
-        userMap.put("uid", user.getAttribute(UID));
-        userMap.put("inum", user.getAttribute(INUM_ATTR));
+        userMap.put("uid", (String) user.getAttribute("uid", true));
+        userMap.put("inum", (String) user.getAttribute("inum", true));
         userMap.put("email", email);
-        userMap.put("lang", user.getAttribute(LANG));
+        userMap.put("lang", (String) user.getAttribute("lang", true));
 
         return userMap;
     }
