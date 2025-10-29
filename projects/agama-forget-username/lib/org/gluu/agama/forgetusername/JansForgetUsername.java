@@ -29,26 +29,43 @@ public class JansForgetUsername extends UsernameResendclass {
 
     @Override
     public Map<String, String> getUserEntityByMail(String email) {
-        User user = getUser(MAIL, email);
-        boolean local = user != null;
-        LogUtils.log("There is %s local account for %s", local ? "a" : "no", email);
+        Map<String, String> userMap = new HashMap<>();
+        try {
+            UserService userService = CdiUtil.bean(UserService.class);
+            User user = userService.getUserByAttribute(MAIL, email, true);
 
-        if (local) {
-            String uid = getSingleValuedAttr(user, UID);
-            String inum = getSingleValuedAttr(user, INUM_ATTR);
-            String lang = getSingleValuedAttr(user, LANG);
-            String mail = getSingleValuedAttr(user, MAIL);
+            if (user == null) {
+                logger.warn("No user found for email: {}", email);
+                return userMap;
+            }
 
-            Map<String, String> userMap = new HashMap<>();
-            userMap.put(UID, uid);
-            userMap.put(INUM_ATTR, inum);
-            userMap.put(LANG, lang);
-            userMap.put(MAIL, mail);
+            logger.info("User found for email: {}", email);
 
-            return userMap;
+            String uid = getAttr(user, UID);
+            String inum = getAttr(user, INUM_ATTR);
+            String lang = getAttr(user, LANG);
+            String mail = getAttr(user, MAIL);
+
+            userMap.put(UID, uid != null ? uid : "");
+            userMap.put(INUM_ATTR, inum != null ? inum : "");
+            userMap.put(LANG, lang != null ? lang : "en");
+            userMap.put(MAIL, mail != null ? mail : email);
+
+        } catch (Exception e) {
+            logger.error("Error fetching user by email {}: {}", email, e.getMessage(), e);
         }
+        return userMap;
+    }
 
-        return new HashMap<>();
+    /** Helper method to safely fetch an attribute value */
+    private String getAttr(User user, String attr) {
+        try {
+            Object val = user.getAttribute(attr, true);
+            return val != null ? val.toString() : null;
+        } catch (Exception e) {
+            logger.warn("Error fetching attribute {}: {}", attr, e.getMessage());
+            return null;
+        }
     }
 
     @Override
@@ -65,7 +82,6 @@ public class JansForgetUsername extends UsernameResendclass {
             String preferredLang = (lang != null && !lang.isEmpty()) ? lang.toLowerCase() : "en";
 
             Map<String, String> templateData;
-
             switch (preferredLang) {
                 case "ar": templateData = EmailUsernameAr.get(username); break;
                 case "es": templateData = EmailUsernameEs.get(username); break;
@@ -88,7 +104,6 @@ public class JansForgetUsername extends UsernameResendclass {
                 return false;
             }
 
-            // Create plain text version by stripping HTML tags
             String textBody = htmlBody.replaceAll("\\<.*?\\>", "");
 
             MailService mailService = CdiUtil.bean(MailService.class);
@@ -98,21 +113,4 @@ public class JansForgetUsername extends UsernameResendclass {
                     to,
                     null,
                     subject,
-                    textBody,
-                    htmlBody
-            );
-
-            if (sent) {
-                logger.info("Username email sent successfully to {}", to);
-            } else {
-                logger.error("Failed to send username email to {}", to);
-            }
-
-            return sent;
-
-        } catch (Exception e) {
-            logger.error("Error sending username email: {}", e.getMessage(), e);
-            return false;
-        }
-    }
-}
+                
