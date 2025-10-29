@@ -10,6 +10,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.*;
 import org.gluu.agama.smtp.*;
+import org.gluu.agama.smtp.EmailUsernameAr;
+import org.gluu.agama.smtp.EmailUsernameEn;
+import org.gluu.agama.smtp.EmailUsernameEs;
+import org.gluu.agama.smtp.EmailUsernameId;
+import org.gluu.agama.smtp.EmailUsernamePt;
+import org.gluu.agama.smtp.EmailUsernameFr;
+
 
 import org.gluu.agama.usernameclass.UsernameResendclass;
 
