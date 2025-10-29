@@ -9,7 +9,7 @@ import io.jans.as.common.service.common.ConfigurationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.*;
-
+import org.gluu.agama.smtp.*;
 
 import org.gluu.agama.usernameclass.UsernameResendclass;
 
