@@ -15,7 +15,7 @@ import org.gluu.agama.usernameclass.UsernameResendclass;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JansForgetUsername extends UsernameResendclass {   // ✅FIX HERE
+public class JansForgetUsername extends UsernameResendclass {   // FIX HERE
 
     private static final Logger logger = LoggerFactory.getLogger(FlowService.class);
 
@@ -74,30 +74,31 @@ public class JansForgetUsername extends UsernameResendclass {   // ✅FIX HERE
 
             String preferredLang = (lang != null && !lang.isEmpty()) ? lang.toLowerCase() : "en";
 
-            Map<String, String> templateData;
-             switch (preferredLang) {
-                case "ar":
-                    templateData = EmailUsernameAr.get(username);
-                    break;
-                case "es":
-                    templateData = EmailUsernameEs.get(username);
-                    break;
-                case "fr":
-                    templateData = EmailUsernameFr.get(username);
-                    break;
-                case "id":
-                    templateData = EmailUsernameId.get(username);
-                    break;
-                case "pt":
-                    templateData = EmailUsernamePt.get(username);
-                    break;
-                default:
-                    templateData = EmailUsernameEn.get(username);
-                    break;
+            Map<String, String> templateData = null;
+
+            switch (preferredLang) {
+                case "ar": templateData = EmailUsernameAr.get(username); break;
+                case "es": templateData = EmailUsernameEs.get(username); break;
+                case "fr": templateData = EmailUsernameFr.get(username); break;
+                case "id": templateData = EmailUsernameId.get(username); break;
+                case "pt": templateData = EmailUsernamePt.get(username); break;
+                default:   templateData = EmailUsernameEn.get(username); break;
             }
 
-            String subject = templateData.get("subject");
+            if (templateData == null || !templateData.containsKey("body")) {
+                logger.error("No email template found for language: {}", preferredLang);
+                return false;
+            }
+
+            String subject = templateData.getOrDefault("subject", "Your Username Information");
             String htmlBody = templateData.get("body");
+
+            if (htmlBody == null || htmlBody.isEmpty()) {
+                logger.error("Email HTML body is empty for language: {}", preferredLang);
+                return false;
+            }
+
+            // Safely remove HTML tags for plain text version
             String textBody = htmlBody.replaceAll("\\<.*?\\>", "");
 
             MailService mailService = CdiUtil.bean(MailService.class);
