@@ -199,7 +199,7 @@
 				"agamaData": {
 					"javaClassName": "",
 					"javaMethodName": "getUserEntityByMail",
-					"javaVariableName": "forgetusernameService",
+					"javaVariableName": "uiFeedback",
 					"exceptionVariableField": "",
 					"callType": "Call method on instance",
 					"arguments": [
@@ -219,7 +219,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": false
+			"selected": true
 		},
 		{
 			"id": "logNode-b455a4d3-dc8b-4d78-8308-ae3df7d4c60e",
@@ -885,8 +885,8 @@
 		}
 	],
 	"viewport": {
-		"x": -1651.215983133207,
-		"y": 8.4029075638732,
-		"zoom": 0.7804751980984793
+		"x": -946.1242963118561,
+		"y": 127.92811250146991,
+		"zoom": 0.9744717971060471
 	}
 }
