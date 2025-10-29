@@ -35,7 +35,7 @@ public class JansForgetUsername extends UsernameResendclass {   // ✅FIX HERE
         try {
             user = userService.getUserByAttribute(MAIL, email, true);
         } catch (Exception e) {
-            logger.error("Error fetching user by email {}: {}", email, e.getMessage());
+            logger.error("Error fetching user by email {}: {}", email, e.getMessage(), e);
         }
 
         if (user == null) {
@@ -45,10 +45,18 @@ public class JansForgetUsername extends UsernameResendclass {   // ✅FIX HERE
 
         Map<String, String> userMap = new HashMap<>();
         
-        userMap.put("uid", (String) user.getAttribute("uid"));
-        userMap.put("inum", (String) user.getAttribute("inum"));
-        userMap.put("email", email);
-        userMap.put("lang", (String) user.getAttribute("lang"));
+        try {
+            String uid = userService.getAttribute(user, UID);
+            String inum = userService.getAttribute(user, INUM_ATTR);
+            String lang = userService.getAttribute(user, LANG);
+
+            userMap.put("uid", uid != null ? uid : "");
+            userMap.put("inum", inum != null ? inum : "");
+            userMap.put("email", email);
+            userMap.put("lang", lang != null ? lang : "en");
+        } catch (Exception e) {
+            logger.error("Error reading attributes for user {}: {}", email, e.getMessage(), e);
+        }
 
         return userMap;
     }
@@ -67,13 +75,25 @@ public class JansForgetUsername extends UsernameResendclass {   // ✅FIX HERE
             String preferredLang = (lang != null && !lang.isEmpty()) ? lang.toLowerCase() : "en";
 
             Map<String, String> templateData;
-            switch (preferredLang) {
-                case "ar": templateData = EmailUsernameAr.get(username); break;
-                case "es": templateData = EmailUsernameEs.get(username); break;
-                case "fr": templateData = EmailUsernameFr.get(username); break;
-                case "id": templateData = EmailUsernameId.get(username); break;
-                case "pt": templateData = EmailUsernamePt.get(username); break;
-                default:   templateData = EmailUsernameEn.get(username); break;
+             switch (preferredLang) {
+                case "ar":
+                    templateData = EmailUsernameAr.get(username);
+                    break;
+                case "es":
+                    templateData = EmailUsernameEs.get(username);
+                    break;
+                case "fr":
+                    templateData = EmailUsernameFr.get(username);
+                    break;
+                case "id":
+                    templateData = EmailUsernameId.get(username);
+                    break;
+                case "pt":
+                    templateData = EmailUsernamePt.get(username);
+                    break;
+                default:
+                    templateData = EmailUsernameEn.get(username);
+                    break;
             }
 
             String subject = templateData.get("subject");
