@@ -1,5 +1,7 @@
 Flow org.gluu.agama.forgetusername.main
      Basepath ""
+// uiFeedback
+uiFeedback = {}
 Call __________#__________ 
 RRF "__________" 
 Log "@ " __________
