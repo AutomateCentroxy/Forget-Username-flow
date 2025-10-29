@@ -247,7 +247,7 @@
 					"nodeColor": "",
 					"titleColor": "",
 					"descColor": "",
-					"displayName": "userData",
+					"displayName": "Get User Data",
 					"hasComment": true,
 					"comment": "",
 					"asssignedVariableName": "userData"
@@ -480,7 +480,7 @@
 					"nodeColor": "",
 					"titleColor": "",
 					"descColor": "",
-					"displayName": "",
+					"displayName": "Send Username Email",
 					"hasComment": true,
 					"comment": "",
 					"asssignedVariableName": "sendMailed"
@@ -883,8 +883,8 @@
 		}
 	],
 	"viewport": {
-		"x": -1665,
-		"y": 128,
-		"zoom": 1
+		"x": -197.16665649414062,
+		"y": 250,
+		"zoom": 0.5
 	}
 }
