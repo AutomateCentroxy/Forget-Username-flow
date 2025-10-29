@@ -16,8 +16,6 @@ import org.gluu.agama.smtp.EmailUsernameEs;
 import org.gluu.agama.smtp.EmailUsernameId;
 import org.gluu.agama.smtp.EmailUsernamePt;
 import org.gluu.agama.smtp.EmailUsernameFr;
-
-
 import org.gluu.agama.usernameclass.UsernameResendclass;
 
 public class JansForgetUsername extends UsernameResendclass {
@@ -26,19 +24,12 @@ public class JansForgetUsername extends UsernameResendclass {
 
     private static final String UID = "uid";
     private static final String INUM_ATTR = "inum";
-    private static final String LANG = "lang";
+    private static final String LANG = "preferredLanguage";
     private static final String MAIL = "mail";
     private static final String DISPLAY_NAME = "displayName";
     private static final String GIVEN_NAME = "givenName";
-    private static final String LAST_NAME = "sn";
 
-    // ✅ Helper method to get user by any attribute (like UID, MAIL, INUM)
-    public User getUser(String attributeName, String value) {
-        UserService userService = CdiUtil.bean(UserService.class);
-        return userService.getUserByAttribute(attributeName, value, true);
-    }
-
-    // ✅ Helper method to safely get single-valued attributes
+    // Helper to safely get single attribute value
     private String getSingleValuedAttr(User user, String attrName) {
         if (user == null || attrName == null) return null;
         try {
@@ -56,22 +47,35 @@ public class JansForgetUsername extends UsernameResendclass {
 
     @Override
     public Map<String, String> getUserEntityByMail(String email) {
-        
-        User user = getUser(MAIL, email);
+        UserService userService = CdiUtil.bean(UserService.class);
+        User user = userService.getUserByAttribute(MAIL, email, true);
+
+        // ⚠️ Ensure we re-fetch full user entry by inum
+        if (user != null) {
+            String inum = getSingleValuedAttr(user, INUM_ATTR);
+            if (inum != null) {
+                user = userService.getUserByInum(inum, true);
+                logger.info("Fetched full user entry for email {} => {}", email, user.getCustomAttributes());
+            }
+        }
+
         boolean local = user != null;
         logger.info("There is {} local account for {}", local ? "a" : "no", email);
 
         if (local) {
-            String uid = getSingleValuedAttr(user, UID);
-            //String userEmail = getSingleValuedAttr(user, MAIL);
+            // Try both uid and jansUid (depends on deployment)
+            String uid = getSingleValuedAttr(user, "uid");
+            if (uid == null) {
+                uid = getSingleValuedAttr(user, "jansUid");
+            }
+
             String inum = getSingleValuedAttr(user, INUM_ATTR);
             String name = getSingleValuedAttr(user, GIVEN_NAME);
-            //String displayName = getSingleValuedAttr(user, DISPLAY_NAME);
-            //String sn = getSingleValuedAttr(user, LAST_NAME);
+            String displayName = getSingleValuedAttr(user, DISPLAY_NAME);
             String lang = getSingleValuedAttr(user, LANG);
 
             if (name == null) {
-                name = getSingleValuedAttr(user, DISPLAY_NAME);
+                name = displayName;
                 if (name == null && email != null && email.contains("@")) {
                     name = email.substring(0, email.indexOf("@"));
                 }
@@ -82,10 +86,10 @@ public class JansForgetUsername extends UsernameResendclass {
             userMap.put(INUM_ATTR, inum);
             userMap.put("name", name);
             userMap.put("email", email);
-            //userMap.put(DISPLAY_NAME, displayName);
-            //userMap.put(LAST_NAME, sn);
+            userMap.put(DISPLAY_NAME, displayName);
             userMap.put(LANG, lang);
 
+            logger.info("Resolved user details for {} => {}", email, userMap);
             return userMap;
         }
 
@@ -104,7 +108,7 @@ public class JansForgetUsername extends UsernameResendclass {
             }
 
             String preferredLang = (lang != null && !lang.isEmpty()) ? lang.toLowerCase() : "en";
-            Map<String, String> templateData = null;
+            Map<String, String> templateData;
 
             switch (preferredLang) {
                 case "ar": templateData = EmailUsernameAr.get(username); break;
@@ -122,17 +126,9 @@ public class JansForgetUsername extends UsernameResendclass {
 
             String subject = templateData.getOrDefault("subject", "Your Username Information");
             String htmlBody = templateData.get("body");
-
-            if (htmlBody == null || htmlBody.isEmpty()) {
-                logger.error("Email HTML body is empty for language: {}", preferredLang);
-                return false;
-            }
-
-            // Plain text version
             String textBody = htmlBody.replaceAll("\\<.*?\\>", "");
 
             MailService mailService = CdiUtil.bean(MailService.class);
-
             boolean sent = mailService.sendMailSigned(
                 smtpConfig.getFromEmailAddress(),
                 smtpConfig.getFromName(),
