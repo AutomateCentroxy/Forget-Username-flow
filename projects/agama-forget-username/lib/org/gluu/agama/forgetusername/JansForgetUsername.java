@@ -1,56 +1,94 @@
 package org.gluu.agama.forgetusername;
 
-import io.jans.agama.engine.service.FlowService;
-import io.jans.as.common.model.common.User;
 import io.jans.as.common.service.common.UserService;
+import io.jans.as.common.model.common.User;
 import io.jans.model.SmtpConfiguration;
 import io.jans.service.MailService;
 import io.jans.service.cdi.util.CdiUtil;
 import io.jans.as.common.service.common.ConfigurationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.*;
 import org.gluu.agama.smtp.*;
+import org.gluu.agama.smtp.EmailUsernameAr;
+import org.gluu.agama.smtp.EmailUsernameEn;
+import org.gluu.agama.smtp.EmailUsernameEs;
+import org.gluu.agama.smtp.EmailUsernameId;
+import org.gluu.agama.smtp.EmailUsernamePt;
+import org.gluu.agama.smtp.EmailUsernameFr;
+
+
 import org.gluu.agama.usernameclass.UsernameResendclass;
 
-import java.util.HashMap;
-import java.util.Map;
+public class JansForgetUsername extends UsernameResendclass {
 
-public class JansForgetUsername extends UsernameResendclass {   // ✅FIX HERE
-
-    private static final Logger logger = LoggerFactory.getLogger(FlowService.class);
+    private static final Logger logger = LoggerFactory.getLogger(JansForgetUsername.class);
 
     private static final String UID = "uid";
     private static final String INUM_ATTR = "inum";
     private static final String LANG = "lang";
     private static final String MAIL = "mail";
+    private static final String DISPLAY_NAME = "displayName";
+    private static final String GIVEN_NAME = "givenName";
+    private static final String LAST_NAME = "sn";
 
-    public JansForgetUsername() {
+    // ✅ Helper method to get user by any attribute (like UID, MAIL, INUM)
+    public User getUser(String attributeName, String value) {
+        UserService userService = CdiUtil.bean(UserService.class);
+        return userService.getUserByAttribute(attributeName, value, true);
+    }
+
+    // ✅ Helper method to safely get single-valued attributes
+    private String getSingleValuedAttr(User user, String attrName) {
+        if (user == null || attrName == null) return null;
+        try {
+            Object val = user.getAttribute(attrName);
+            if (val instanceof String) {
+                return (String) val;
+            } else if (val instanceof List && !((List<?>) val).isEmpty()) {
+                return (String) ((List<?>) val).get(0);
+            }
+        } catch (Exception e) {
+            logger.warn("Error reading attribute {}: {}", attrName, e.getMessage());
+        }
+        return null;
     }
 
     @Override
     public Map<String, String> getUserEntityByMail(String email) {
-        UserService userService = CdiUtil.bean(UserService.class);
-        User user = null;
+        User user = getUser(MAIL, email);
+        boolean local = user != null;
+        logger.info("There is {} local account for {}", local ? "a" : "no", email);
 
-        try {
-            user = userService.getUserByAttribute(MAIL, email, true);
-        } catch (Exception e) {
-            logger.error("Error fetching user by email {}: {}", email, e.getMessage());
+        if (local) {
+            String userEmail = getSingleValuedAttr(user, MAIL);
+            String inum = getSingleValuedAttr(user, INUM_ATTR);
+            String name = getSingleValuedAttr(user, GIVEN_NAME);
+            String uid = getSingleValuedAttr(user, UID);
+            String displayName = getSingleValuedAttr(user, DISPLAY_NAME);
+            String sn = getSingleValuedAttr(user, LAST_NAME);
+            String lang = getSingleValuedAttr(user, LANG);
+
+            if (name == null) {
+                name = displayName;
+                if (name == null && userEmail != null && userEmail.contains("@")) {
+                    name = userEmail.substring(0, userEmail.indexOf("@"));
+                }
+            }
+
+            Map<String, String> userMap = new HashMap<>();
+            userMap.put(UID, uid);
+            userMap.put(INUM_ATTR, inum);
+            userMap.put("name", name);
+            userMap.put("email", userEmail);
+            userMap.put(DISPLAY_NAME, displayName);
+            userMap.put(LAST_NAME, sn);
+            userMap.put(LANG, lang);
+
+            return userMap;
         }
 
-        if (user == null) {
-            logger.warn("No user found for email: {}", email);
-            return null;
-        }
-
-        Map<String, String> userMap = new HashMap<>();
-        
-        userMap.put("uid", (String) user.getAttribute("uid", true));
-        userMap.put("inum", (String) user.getAttribute("inum", true));
-        userMap.put("email", email);
-        userMap.put("lang", (String) user.getAttribute("lang", true));
-
-        return userMap;
+        return new HashMap<>();
     }
 
     @Override
@@ -65,8 +103,8 @@ public class JansForgetUsername extends UsernameResendclass {   // ✅FIX HERE
             }
 
             String preferredLang = (lang != null && !lang.isEmpty()) ? lang.toLowerCase() : "en";
+            Map<String, String> templateData = null;
 
-            Map<String, String> templateData;
             switch (preferredLang) {
                 case "ar": templateData = EmailUsernameAr.get(username); break;
                 case "es": templateData = EmailUsernameEs.get(username); break;
@@ -76,19 +114,32 @@ public class JansForgetUsername extends UsernameResendclass {   // ✅FIX HERE
                 default:   templateData = EmailUsernameEn.get(username); break;
             }
 
-            String subject = templateData.get("subject");
+            if (templateData == null || !templateData.containsKey("body")) {
+                logger.error("No email template found for language: {}", preferredLang);
+                return false;
+            }
+
+            String subject = templateData.getOrDefault("subject", "Your Username Information");
             String htmlBody = templateData.get("body");
+
+            if (htmlBody == null || htmlBody.isEmpty()) {
+                logger.error("Email HTML body is empty for language: {}", preferredLang);
+                return false;
+            }
+
+            // Plain text version
             String textBody = htmlBody.replaceAll("\\<.*?\\>", "");
 
             MailService mailService = CdiUtil.bean(MailService.class);
+
             boolean sent = mailService.sendMailSigned(
-                    smtpConfig.getFromEmailAddress(),
-                    smtpConfig.getFromName(),
-                    to,
-                    null,
-                    subject,
-                    textBody,
-                    htmlBody
+                smtpConfig.getFromEmailAddress(),
+                smtpConfig.getFromName(),
+                to,
+                null,
+                subject,
+                textBody,
+                htmlBody
             );
 
             if (sent) {
@@ -104,5 +155,4 @@ public class JansForgetUsername extends UsernameResendclass {   // ✅FIX HERE
             return false;
         }
     }
-
 }

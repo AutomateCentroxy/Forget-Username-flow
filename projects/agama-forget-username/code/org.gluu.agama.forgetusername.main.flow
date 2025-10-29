@@ -1,4 +1,4 @@
-Flow org.gluu.agama.forgetusername
+Flow org.gluu.agama.forgetusername.main
      Basepath ""
 // Create  variable for UCreate  variable for UI feedbackI feedback
 uiFeedback = {}
