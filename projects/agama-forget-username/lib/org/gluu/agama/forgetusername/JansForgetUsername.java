@@ -20,40 +20,67 @@ public class JansForgetUsername extends UsernameResendclass {
     private static final String INUM_ATTR = "inum";
     private static final String LANG = "lang";
     private static final String MAIL = "mail";
+    private static final String DISPLAY_NAME = "displayName";
+    private static final String GIVEN_NAME = "givenName";
+    private static final String LAST_NAME = "sn";
+
+    // ✅ Helper method to get user by any attribute (like UID, MAIL, INUM)
+    private User getUser(String attributeName, String value) {
+        UserService userService = CdiUtil.bean(UserService.class);
+        return userService.getUserByAttribute(attributeName, value, true);
+    }
+
+    // ✅ Helper method to safely get single-valued attributes
+    private String getSingleValuedAttr(User user, String attrName) {
+        if (user == null || attrName == null) return null;
+        try {
+            Object val = user.getAttribute(attrName);
+            if (val instanceof String) {
+                return (String) val;
+            } else if (val instanceof List && !((List<?>) val).isEmpty()) {
+                return (String) ((List<?>) val).get(0);
+            }
+        } catch (Exception e) {
+            logger.warn("Error reading attribute {}: {}", attrName, e.getMessage());
+        }
+        return null;
+    }
 
     @Override
     public Map<String, String> getUserEntityByMail(String email) {
-        UserService userService = CdiUtil.bean(UserService.class);
-        User user = null;
+        User user = getUser(MAIL, email);
+        boolean local = user != null;
+        logger.info("There is {} local account for {}", local ? "a" : "no", email);
 
-        try {
-            user = userService.getUserByAttribute(MAIL, email, true);
-        } catch (Exception e) {
-            logger.error("Error fetching user by email {}: {}", email, e.getMessage(), e);
+        if (local) {
+            String userEmail = getSingleValuedAttr(user, MAIL);
+            String inum = getSingleValuedAttr(user, INUM_ATTR);
+            String name = getSingleValuedAttr(user, GIVEN_NAME);
+            String uid = getSingleValuedAttr(user, UID);
+            String displayName = getSingleValuedAttr(user, DISPLAY_NAME);
+            String sn = getSingleValuedAttr(user, LAST_NAME);
+            String lang = getSingleValuedAttr(user, LANG);
+
+            if (name == null) {
+                name = displayName;
+                if (name == null && userEmail != null && userEmail.contains("@")) {
+                    name = userEmail.substring(0, userEmail.indexOf("@"));
+                }
+            }
+
+            Map<String, String> userMap = new HashMap<>();
+            userMap.put(UID, uid);
+            userMap.put(INUM_ATTR, inum);
+            userMap.put("name", name);
+            userMap.put("email", userEmail);
+            userMap.put(DISPLAY_NAME, displayName);
+            userMap.put(LAST_NAME, sn);
+            userMap.put(LANG, lang);
+
+            return userMap;
         }
 
-        if (user == null) {
-            logger.warn("No user found for email: {}", email);
-            return null;
-        }
-
-        Map<String, String> userMap = new HashMap<>();
-
-        try {
-            String uid = user.getAttribute(UID);
-            String inum = user.getAttribute(INUM_ATTR);
-            String lang = user.getAttribute(LANG);
-
-            userMap.put("uid", uid != null ? uid : "");
-            userMap.put("inum", inum != null ? inum : "");
-            userMap.put("email", email);
-            userMap.put("lang", lang != null ? lang : "en");
-
-        } catch (Exception e) {
-            logger.error("Error reading attributes for user {}: {}", email, e.getMessage(), e);
-        }
-
-        return userMap;
+        return new HashMap<>();
     }
 
     @Override
@@ -97,7 +124,6 @@ public class JansForgetUsername extends UsernameResendclass {
 
             MailService mailService = CdiUtil.bean(MailService.class);
 
-            // FIX — Groovy parser issue solved
             boolean sent = mailService.sendMailSigned(
                 smtpConfig.getFromEmailAddress(),
                 smtpConfig.getFromName(),
