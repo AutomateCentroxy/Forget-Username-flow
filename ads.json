@@ -18,7 +18,8 @@
         "configs": {
             "org.gluu.agama.forgetusername": {},
             "senduser": {},
-            "org.gluu.agama.forgetusername.main": {}
+            "org.gluu.agama.forgetusername.main": {},
+            "usernameclass": {}
         },
         "name": "agama-forget-username"
     }
