@@ -56,7 +56,18 @@ public class JansForgetUsername extends UsernameResendclass {
 
     @Override
     public Map<String, String> getUserEntityByMail(String email) {
-        User user = getUser(MAIL, email);
+
+        UserService userService = CdiUtil.bean(UserService.class);
+        User user = userService.getUserByAttribute(MAIL, email, true);
+
+        if (user != null) {
+            // Fetch complete user to ensure all attributes are loaded
+            String inum = (String) user.getAttribute("inum");
+            if (inum != null) {
+                user = userService.getUserByInum(inum, true);
+            }
+        }
+
         boolean local = user != null;
         logger.info("There is {} local account for {}", local ? "a" : "no", email);
 
