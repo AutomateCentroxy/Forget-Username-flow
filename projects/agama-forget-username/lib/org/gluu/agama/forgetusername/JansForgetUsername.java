@@ -15,7 +15,7 @@ import org.gluu.agama.usernameclass.UsernameResendclass;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JansForgetUsername extends UsernameResendclass {   // FIX HERE
+public class JansForgetUsername extends UsernameResendclass {
 
     private static final Logger logger = LoggerFactory.getLogger(FlowService.class);
 
@@ -29,36 +29,26 @@ public class JansForgetUsername extends UsernameResendclass {   // FIX HERE
 
     @Override
     public Map<String, String> getUserEntityByMail(String email) {
-        UserService userService = CdiUtil.bean(UserService.class);
-        User user = null;
+        User user = getUser(MAIL, email);
+        boolean local = user != null;
+        LogUtils.log("There is %s local account for %s", local ? "a" : "no", email);
 
-        try {
-            user = userService.getUserByAttribute(MAIL, email, true);
-        } catch (Exception e) {
-            logger.error("Error fetching user by email {}: {}", email, e.getMessage(), e);
+        if (local) {
+            String uid = getSingleValuedAttr(user, UID);
+            String inum = getSingleValuedAttr(user, INUM_ATTR);
+            String lang = getSingleValuedAttr(user, LANG);
+            String mail = getSingleValuedAttr(user, MAIL);
+
+            Map<String, String> userMap = new HashMap<>();
+            userMap.put(UID, uid);
+            userMap.put(INUM_ATTR, inum);
+            userMap.put(LANG, lang);
+            userMap.put(MAIL, mail);
+
+            return userMap;
         }
 
-        if (user == null) {
-            logger.warn("No user found for email: {}", email);
-            return null;
-        }
-
-        Map<String, String> userMap = new HashMap<>();
-        
-        try {
-            String uid = user.getAttribute(UID);
-            String inum = user.getAttribute(INUM_ATTR);
-            String lang = user.getAttribute(LANG);
-
-            userMap.put("uid", uid != null ? uid : "");
-            userMap.put("inum", inum != null ? inum : "");
-            userMap.put("email", email);
-            userMap.put("lang", (lang != null && !lang.isEmpty()) ? lang : "en");
-        } catch (Exception e) {
-            logger.error("Error reading attributes for user {}: {}", email, e.getMessage(), e);
-        }
-
-        return userMap;
+        return new HashMap<>();
     }
 
     @Override
@@ -74,7 +64,7 @@ public class JansForgetUsername extends UsernameResendclass {   // FIX HERE
 
             String preferredLang = (lang != null && !lang.isEmpty()) ? lang.toLowerCase() : "en";
 
-            Map<String, String> templateData = null;
+            Map<String, String> templateData;
 
             switch (preferredLang) {
                 case "ar": templateData = EmailUsernameAr.get(username); break;
@@ -98,7 +88,7 @@ public class JansForgetUsername extends UsernameResendclass {   // FIX HERE
                 return false;
             }
 
-            // Safely remove HTML tags for plain text version
+            // Create plain text version by stripping HTML tags
             String textBody = htmlBody.replaceAll("\\<.*?\\>", "");
 
             MailService mailService = CdiUtil.bean(MailService.class);
@@ -125,5 +115,4 @@ public class JansForgetUsername extends UsernameResendclass {   // FIX HERE
             return false;
         }
     }
-
 }
