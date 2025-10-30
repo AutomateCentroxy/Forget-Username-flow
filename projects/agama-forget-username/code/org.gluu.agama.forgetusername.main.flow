@@ -23,6 +23,6 @@ Otherwise
      // Assigns the error message for logs or display later
      uiFeedback.errorMessage = "Invalid email address. User does not exist."
      // Logs the invalid email entered
-     Log "@error Invalid email entered: "
+     Log "@error Invalid email entered: " email
      // End the Flow
      Finish uiFeedback.errorMessage
