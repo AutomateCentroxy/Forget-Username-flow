@@ -556,41 +556,6 @@
 			"selected": false
 		},
 		{
-			"id": "finishNode-113e1d2d-b828-4d10-beb0-1ea61cbda66c",
-			"type": "finishNode",
-			"position": {
-				"x": 2570.9706152792496,
-				"y": -164.27205852957337
-			},
-			"data": {
-				"id": "finishNode-113e1d2d-b828-4d10-beb0-1ea61cbda66c",
-				"type": "finishNode",
-				"position": {
-					"x": 2780,
-					"y": -162
-				},
-				"previousNodeId": "assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9",
-				"agamaData": {
-					"nodeColor": "",
-					"titleColor": "",
-					"descColor": "",
-					"displayName": "",
-					"hasComment": true,
-					"comment": "",
-					"flowfilename": "",
-					"returnVariable": "uiFeedback",
-					"finishMode": "withVariable",
-					"nodeIcon": "material-symbols:line-end-square-rounded"
-				}
-			},
-			"measured": {
-				"width": 170,
-				"height": 124
-			},
-			"selected": true,
-			"dragging": false
-		},
-		{
 			"id": "assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9",
 			"type": "assignmentNode",
 			"position": {
@@ -611,16 +576,16 @@
 						{
 							"variableTypeCheck": true,
 							"assignmentExpression": "\"Invalid email address. User does not exist.\"",
-							"assignedVariableName": "uiFeedback"
+							"assignedVariableName": "uiFeedback.errorMessage"
 						}
 					],
 					"nodeIcon": "material-symbols:equal",
 					"nodeColor": "",
 					"titleColor": "",
 					"descColor": "",
-					"displayName": "",
+					"displayName": "Set uiFeedback Error",
 					"hasComment": true,
-					"comment": ""
+					"comment": "Assigns the error message for logs or display later"
 				}
 			},
 			"measured": {
@@ -628,6 +593,73 @@
 				"height": 124
 			},
 			"selected": false
+		},
+		{
+			"id": "logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74",
+			"type": "logNode",
+			"position": {
+				"x": 2530,
+				"y": -162
+			},
+			"data": {
+				"id": "logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74",
+				"type": "logNode",
+				"position": {
+					"x": 2530,
+					"y": -162
+				},
+				"previousNodeId": "assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9",
+				"agamaData": {
+					"logMessage": "\"Invalid email entered: \" + email",
+					"logLevel": "error",
+					"nodeIcon": "octicon:log-16",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "Log Invalid Email",
+					"hasComment": true,
+					"comment": "Logs the invalid email entered"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 124
+			},
+			"selected": false
+		},
+		{
+			"id": "finishNode-447ada9a-3509-4c1d-9cdf-6976e55aa353",
+			"type": "finishNode",
+			"position": {
+				"x": 2780,
+				"y": -162
+			},
+			"data": {
+				"id": "finishNode-447ada9a-3509-4c1d-9cdf-6976e55aa353",
+				"type": "finishNode",
+				"position": {
+					"x": 2780,
+					"y": -162
+				},
+				"previousNodeId": "logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74",
+				"agamaData": {
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "Finish InvalidEmail",
+					"hasComment": true,
+					"comment": "End the Flow",
+					"flowfilename": "",
+					"returnVariable": "uiFeedback.errorMessage",
+					"finishMode": "withVariable",
+					"nodeIcon": "material-symbols:line-end-square-rounded"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 124
+			},
+			"selected": true
 		}
 	],
 	"edges": [
@@ -917,27 +949,47 @@
 			"sourceHandle": "source_whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30_otherwise"
 		},
 		{
+			"id": "assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9-logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74",
+			"type": "default",
 			"source": "assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9",
-			"sourceHandle": "source_assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9",
-			"target": "finishNode-113e1d2d-b828-4d10-beb0-1ea61cbda66c",
-			"targetHandle": "target_finishNode-113e1d2d-b828-4d10-beb0-1ea61cbda66c",
-			"label": "",
+			"target": "logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74",
 			"labelBgPadding": [
 				8,
 				4
 			],
 			"labelBgBorderRadius": 4,
+			"label": "",
 			"labelBgStyle": {
 				"fill": "#009688",
 				"color": "#ffffff",
 				"fillOpacity": 0.7
 			},
-			"id": "xy-edge__assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9source_assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9-finishNode-113e1d2d-b828-4d10-beb0-1ea61cbda66ctarget_finishNode-113e1d2d-b828-4d10-beb0-1ea61cbda66c"
+			"labelShowBg": true,
+			"sourceHandle": "source_assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9"
+		},
+		{
+			"id": "logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74-finishNode-447ada9a-3509-4c1d-9cdf-6976e55aa353",
+			"type": "default",
+			"source": "logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74",
+			"target": "finishNode-447ada9a-3509-4c1d-9cdf-6976e55aa353",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74"
 		}
 	],
 	"viewport": {
-		"x": -1748.2873577921987,
-		"y": 252.8276057229874,
-		"zoom": 0.8802590135631507
+		"x": -2202,
+		"y": 267,
+		"zoom": 1
 	}
 }
