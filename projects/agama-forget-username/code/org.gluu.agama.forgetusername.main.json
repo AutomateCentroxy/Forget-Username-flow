@@ -556,17 +556,17 @@
 			"selected": false
 		},
 		{
-			"id": "rrfNode-71fd0359-c14d-46d9-9103-ac00d805b81f",
+			"id": "rrfNode-204d03bc-e574-4c30-bc7a-532ef4eaa744",
 			"type": "rrfNode",
 			"position": {
 				"x": 2280,
 				"y": -162
 			},
 			"data": {
-				"id": "rrfNode-71fd0359-c14d-46d9-9103-ac00d805b81f",
+				"id": "rrfNode-204d03bc-e574-4c30-bc7a-532ef4eaa744",
 				"type": "rrfNode",
 				"position": {
-					"x": 2530,
+					"x": 2280,
 					"y": -162
 				},
 				"previousNodeId": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30",
@@ -579,9 +579,9 @@
 					"nodeColor": "",
 					"titleColor": "",
 					"descColor": "",
-					"displayName": "Show Invalid Email Message",
+					"displayName": "InvalidEmailUI",
 					"hasComment": true,
-					"comment": "Displays error message when user enters invalid email, then ends the flow.",
+					"comment": "",
 					"arguments": "uiFeedback"
 				}
 			},
@@ -592,30 +592,30 @@
 			"selected": false
 		},
 		{
-			"id": "finishNode-eff3ab2e-b565-45ba-ac54-4134381b53ca",
+			"id": "finishNode-797a5f61-ce63-4a15-9320-7b576dc82939",
 			"type": "finishNode",
 			"position": {
 				"x": 2530,
 				"y": -162
 			},
 			"data": {
-				"id": "finishNode-eff3ab2e-b565-45ba-ac54-4134381b53ca",
+				"id": "finishNode-797a5f61-ce63-4a15-9320-7b576dc82939",
 				"type": "finishNode",
 				"position": {
-					"x": 2780,
+					"x": 2530,
 					"y": -162
 				},
-				"previousNodeId": "rrfNode-71fd0359-c14d-46d9-9103-ac00d805b81f",
+				"previousNodeId": "rrfNode-204d03bc-e574-4c30-bc7a-532ef4eaa744",
 				"agamaData": {
 					"nodeColor": "",
 					"titleColor": "",
 					"descColor": "",
-					"displayName": "Finish - Invalid Email",
+					"displayName": "",
 					"hasComment": true,
-					"comment": "End flow after invalid email attempt.",
+					"comment": "Finish the flow after invalid email message",
 					"flowfilename": "",
-					"returnVariable": "InvalidEmail",
-					"finishMode": "withFailure",
+					"returnVariable": "uiFeedback",
+					"finishMode": "withVariable",
 					"nodeIcon": "material-symbols:line-end-square-rounded"
 				}
 			},
@@ -623,7 +623,8 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true
+			"selected": true,
+			"dragging": false
 		}
 	],
 	"edges": [
@@ -894,10 +895,29 @@
 			"sourceHandle": "source_rrfNode-b4a4300d-64d4-4f89-8f4c-01cb3fdd2b27"
 		},
 		{
-			"id": "rrfNode-71fd0359-c14d-46d9-9103-ac00d805b81f-finishNode-eff3ab2e-b565-45ba-ac54-4134381b53ca",
+			"id": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30-rrfNode-204d03bc-e574-4c30-bc7a-532ef4eaa744",
 			"type": "default",
-			"source": "rrfNode-71fd0359-c14d-46d9-9103-ac00d805b81f",
-			"target": "finishNode-eff3ab2e-b565-45ba-ac54-4134381b53ca",
+			"source": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30",
+			"target": "rrfNode-204d03bc-e574-4c30-bc7a-532ef4eaa744",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "otherwise",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30_otherwise"
+		},
+		{
+			"id": "rrfNode-204d03bc-e574-4c30-bc7a-532ef4eaa744-finishNode-797a5f61-ce63-4a15-9320-7b576dc82939",
+			"type": "default",
+			"source": "rrfNode-204d03bc-e574-4c30-bc7a-532ef4eaa744",
+			"target": "finishNode-797a5f61-ce63-4a15-9320-7b576dc82939",
 			"labelBgPadding": [
 				8,
 				4
@@ -910,30 +930,12 @@
 				"fillOpacity": 0.7
 			},
 			"labelShowBg": true,
-			"sourceHandle": "source_rrfNode-71fd0359-c14d-46d9-9103-ac00d805b81f"
-		},
-		{
-			"source": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30",
-			"sourceHandle": "source_whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30_otherwise",
-			"target": "rrfNode-71fd0359-c14d-46d9-9103-ac00d805b81f",
-			"targetHandle": "target_rrfNode-71fd0359-c14d-46d9-9103-ac00d805b81f",
-			"label": "otherwise",
-			"labelBgPadding": [
-				8,
-				4
-			],
-			"labelBgBorderRadius": 4,
-			"labelBgStyle": {
-				"fill": "#009688",
-				"color": "#ffffff",
-				"fillOpacity": 0.7
-			},
-			"id": "xy-edge__whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30source_whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30_otherwise-rrfNode-71fd0359-c14d-46d9-9103-ac00d805b81ftarget_rrfNode-71fd0359-c14d-46d9-9103-ac00d805b81f"
+			"sourceHandle": "source_rrfNode-204d03bc-e574-4c30-bc7a-532ef4eaa744"
 		}
 	],
 	"viewport": {
-		"x": -1932,
-		"y": 225,
+		"x": -1894,
+		"y": 234,
 		"zoom": 1
 	}
 }
