@@ -36,7 +36,11 @@ class EmailUsernameFr {
                         </div>
 
                         
-                        <p>Si vous n'êtes pas à l'origine de cette demande, veuillez contacter immédiatement notre équipe de support à support@phiwallet.com ou via le chat en direct sur href="http://www.phiwallet.com".</p>
+                        <p>Si vous n'êtes pas à l'origine de cette demande, veuillez contacter immédiatement notre équipe de support à 
+                         <a href="mailto:support@phiwallet.com" style="color:#AD9269;text-decoration:none;">support@phiwallet.com</a>
+                         ou via le chat en direct sur 
+                         <a href="https://www.phiwallet.com" style="color:#AD9269;text-decoration:none;">www.phiwallet.com</a>.
+                        </p>
 
                         <p><strong>Pour votre sécurité :</strong></p>
 
