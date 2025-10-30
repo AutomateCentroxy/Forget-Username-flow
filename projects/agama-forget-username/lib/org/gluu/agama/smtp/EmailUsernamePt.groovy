@@ -21,25 +21,25 @@ class EmailUsernamePt {
             <tr>
               <td style="padding:45px;font-family:'Nunito Sans',Helvetica,Arial,sans-serif;font-size:16px;color:#51545E;line-height:1.625;">
                 <p>Olá,</p>
-                <p>Bem-vindo à <strong>Phi Wallet</strong>! A sua jornada de proteção patrimonial começa agora.</p>
+                <p>Conforme solicitado, aqui está o nome de utilizador associado a este endereço de e-mail:</p>
 
-                <p><strong>Detalhes da sua conta:</strong></p>
+                <p><strong>Nome de utilizador:</strong></p>
                 <div style="text-align:center;margin:30px 0;">
                   <div style="display:inline-block;background-color:#f5f5f5;color:#AD9269;font-size:28px;font-weight:600;letter-spacing:2px;padding:10px 20px;border-radius:4px;">
                     """ + username + """
                   </div>
                 </div>
 
-                <p><strong>Próximo passo: Verificar a sua identidade</strong></p>
-                <p>Para garantir que o seu ouro permanece exclusivamente sob o seu controlo, precisamos de verificar a sua identidade. Esta medida de segurança protege o seu ouro e confere-lhe plenos direitos de propriedade.</p>
+                <p>Se não foi você quem fez este pedido, por favor contacte imediatamente a nossa equipa de suporte através de support@phiwallet.com ou do chat ao vivo em http://www.phiwallet.com .</p>
 
-                <div style="text-align:center;margin:30px 0;">
-                  <a href="https://link.phiwallet.com/vll3ylhkeqb" style="background-color:#AD9269;color:#ffffff;padding:14px 28px;text-decoration:none;border-radius:4px;font-weight:600;">
-                    Abrir a aplicação
-                  </a>
-                </div>
+                <p><strong>Para sua segurança:</strong></p>
 
-                <p>Obrigado por escolher a Phi Wallet.</p>
+                <ul>
+                    <li>Nunca partilhe o seu nome de utilizador ou palavra-passe.</li>
+                    <li>A Phi Wallet nunca lhe pedirá informações confidenciais como a sua palavra-passe.</li>
+                </ul>
+
+                <p>Obrigado por utilizar a Phi Wallet.</p>
                 <p style="margin-top:30px;">Com os melhores cumprimentos,<br>Equipa Phi Wallet</p>
               </td>
             </tr>
@@ -74,7 +74,7 @@ class EmailUsernamePt {
 """;
 
         return Map.of(
-            "subject", "Bem-vindo à Phi Wallet",
+            "subject", "Recuperação do seu nome de utilizador Phi Wallet",
             "body", html
         );
     }
