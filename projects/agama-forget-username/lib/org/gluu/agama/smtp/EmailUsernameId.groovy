@@ -20,26 +20,27 @@
               </tr>
               <tr>
                 <td style="padding:45px;font-family:'Nunito Sans',Helvetica,Arial,sans-serif;font-size:16px;color:#51545E;line-height:1.625;">
-                  <p>Halo,</p>
-                  <p>Selamat datang di <strong>Phi Wallet</strong>! Perjalanan perlindungan kekayaan Anda dimulai sekarang.</p>
+                  <p>Hai,</p>
+                  <p>Sesuai permintaan Anda, berikut adalah nama pengguna yang terhubung dengan alamat email ini:</p>
 
-                  <p><strong>Detail Akun Anda:</strong></p>
+                  <p><strong>Nama Pengguna:</strong></p>
                   <div style="text-align:center;margin:30px 0;">
                     <div style="display:inline-block;background-color:#f5f5f5;color:#AD9269;font-size:28px;font-weight:600;letter-spacing:2px;padding:10px 20px;border-radius:4px;">
                       """ + username + """
                     </div>
                   </div>
 
-                  <p><strong>Langkah Selanjutnya: Memverifikasi identitas Anda</strong></p>
-                  <p>Untuk memastikan emas Anda tetap sepenuhnya berada di bawah kendali Anda, kami perlu memverifikasi identitas Anda. Langkah keamanan ini melindungi emas Anda dan memberikan Anda hak kepemilikan penuh.</p>
+                  <p>Jika Anda tidak merasa melakukan permintaan ini, segera hubungi tim dukungan kami melalui support@phiwallet.com atau melalui live chat di http://www.phiwallet.com .</p>
 
-                  <div style="text-align:center;margin:30px 0;">
-                    <a href="https://link.phiwallet.com/vll3ylhkeqb" style="background-color:#AD9269;color:#ffffff;padding:14px 28px;text-decoration:none;border-radius:4px;font-weight:600;">
-                      Buka Aplikasi
-                    </a>
-                  </div>
+                  <p><strong>Demi keamanan Anda:</strong></p>
 
-                  <p>Terima kasih telah memilih Phi Wallet.</p>
+                  <ul>
+                      <li>Jangan pernah membagikan nama pengguna atau kata sandi Anda.</li>
+                      <li>Phi Wallet tidak akan pernah meminta informasi sensitif seperti kata sandi Anda.</li>
+                  </ul>
+
+
+                  <p>Terima kasih telah menggunakan Phi Wallet.</p>
                   <p style="margin-top:30px;">Salam hangat,<br>Tim Phi Wallet</p>
                 </td>
               </tr>
@@ -74,7 +75,7 @@
   """;
 
           return Map.of(
-              "subject", "Selamat Datang di Phi Wallet",
+              "subject", "Pemulihan Nama Pengguna Phi Wallet Anda",
               "body", html
           );
       }
