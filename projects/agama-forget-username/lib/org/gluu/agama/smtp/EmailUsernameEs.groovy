@@ -35,7 +35,7 @@ class EmailUsernameEs {
                           </div>
                         </div>
 
-                        <p>Si no realizaste esta solicitud, por favor contacta de inmediato con nuestro equipo de soporte a través de href="support@phiwallet.com" o por chat en vivo en .</p>
+                        <p>Si no realizaste esta solicitud, por favor contacta de inmediato con nuestro equipo de soporte a través de href="support@phiwallet.com" o por chat en vivo en href="http://www.phiwallet.com".</p>
 
                         <p><strong>Por tu seguridad:</strong></p>
                         <ul><li>Nunca compartas tu nombre de usuario ni tu contraseña.</li>
