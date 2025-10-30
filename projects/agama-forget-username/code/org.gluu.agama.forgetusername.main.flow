@@ -20,8 +20,6 @@ When userData is not null
      RRF "acknowledgementEmail.ftlh" uiFeedback
      Finish username
 Otherwise
-     // Displays error message when user enters invalid email, then ends the flow.
      RRF "InputEmail.ftlh" uiFeedback
-     // End flow after invalid email attempt.
-     it_idzxo = {success:false, error: "InvalidEmail"}
-     Finish it_idzxo
+     // Finish the flow after invalid email message
+     Finish uiFeedback
