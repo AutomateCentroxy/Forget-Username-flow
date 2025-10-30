@@ -26,17 +26,19 @@ class EmailUsernameFr {
                     <tr>
                       <td style="padding:45px;font-family:'Nunito Sans',Helvetica,Arial,sans-serif;font-size:16px;color:#51545E;line-height:1.625;">
                         <p>Bonjour,</p>
-                        <p>Bienvenue sur <strong>Phi Wallet</strong> ! Votre parcours de protection patrimoniale commence maintenant.</p>
+                        <p>Comme demandé, voici le nom d'utilisateur associé à cette adresse e-mail :</p>
 
-                        <p><strong>Détails de votre compte :</strong></p>
+                        <p><strong>Nom d'utilisateur :</strong></p>
                         <div style="text-align:center;margin:30px 0;">
                           <div style="display:inline-block;background-color:#f5f5f5;color:#AD9269;font-size:28px;font-weight:600;letter-spacing:2px;padding:10px 20px;border-radius:4px;">
                             """ + username + """
                           </div>
                         </div>
 
-                        <p><strong>Prochaine étape : Vérifier votre identité</strong></p>
-                        <p>Pour garantir que votre or reste exclusivement sous votre contrôle, nous devons vérifier votre identité. Cette mesure de sécurité protège votre or et vous confère tous les droits de propriété.</p>
+                        
+                        <p>Si vous n'êtes pas à l'origine de cette demande, veuillez contacter immédiatement notre équipe de support à support@phiwallet.com ou via le chat en direct sur http://www.phiwallet.com.</p>
+
+                        <p><strong>Pour votre sécurité :</strong></p>
 
                         <div style="text-align:center;margin:30px 0;">
                           <a href="https://link.phiwallet.com/vll3ylhkeqb" style="background-color:#AD9269;color:#ffffff;padding:14px 28px;text-decoration:none;border-radius:4px;font-weight:600;">
@@ -44,8 +46,8 @@ class EmailUsernameFr {
                           </a>
                         </div>
 
-                        <p>Merci d’avoir choisi Phi Wallet.</p>
-                        <p style="margin-top:30px;">Cordialement,<br>L’équipe Phi Wallet</p>
+                        <p>Merci d'utiliser Phi Wallet.</p>
+                        <p style="margin-top:30px;">Cordialement,<br>Tea Phi Wallet</p>
                       </td>
                     </tr>
                   </tbody>
@@ -86,7 +88,7 @@ class EmailUsernameFr {
 """;
 
         return Map.of(
-            "subject", "Bienvenue sur Phi Wallet",
+            "subject", "Récupération de votre nom d'utilisateur Phi Wallet",
             "body", html
         );
     }
