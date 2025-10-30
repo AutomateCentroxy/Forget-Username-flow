@@ -27,26 +27,25 @@ class EmailUsernameAr {
                   <tbody>
                     <tr>
                       <td style="padding:45px;font-family:'Nunito Sans',Helvetica,Arial,sans-serif;color:#51545E;font-size:16px;line-height:1.8;text-align:right;">
-                        <p>مرحباً،</p>
-                        <p>أهلاً بك في <strong>فاي والت (Phi Wallet)</strong>! ‏رحلتك نحو حماية مستقبلك المالي تبدأ الآن.</p>
+                        <p>مرحبا،</p>
+                        <p>كما طلبت، إليك اسم المستخدم المرتبط بعنوان البريد اإللكتروني:</p>
 
-                        <p><strong>تفاصيل حسابك:</strong></p>
+                        <p><strong>اسم المستخدم :</strong></p>
                         <div style="text-align:center;margin:30px 0;">
                           <div style="display:inline-block;background-color:#f5f5f5;color:#AD9269;font-size:28px;font-weight:600;letter-spacing:2px;padding:10px 20px;border-radius:4px;">
                             """ + username + """
                           </div>
                         </div>
 
-                        <p><strong>الخطوة التالية: ‏‏التحقق من هويتك</strong></p>
-                        <p>لضمان بقاء ذهبك تحت سيطرتك الحصرية، نحتاج إلى التحقق من هويتك. يحمي هذا الإجراء الأمني ذهبك ويمنحك حقوق الملكية الكاملة.</p>
+                        <p>إذا لم تكن أنت من قّدم هذا الطلب، يرجى التواصل فورًامع فريق الدعم.</p>
 
-                        <div style="text-align:center;margin:30px 0;">
-                          <a href="https://link.phiwallet.com/vll3ylhkeqb" style="background-color:#AD9269;color:#ffffff;padding:14px 28px;text-decoration:none;border-radius:4px;font-weight:600;display:inline-block;">
-                            افتح التطبيق
-                          </a>
-                        </div>
 
-                        <p>إذا كانت لديك أي أسئلة، يسعدنا دائماً مساعدتك. شكراً لاختيارك فاي والت!</p>
+                        <p><strong>لضمان سلامة حسابك:</strong></p>
+                        <ul style="list-style-type:disc;margin-right:20px;">
+                          <li>لا تشارك اسم المستخدم أو كلمة المرور مع أي شخص.</li>
+                          <li>لن نطلب منك أبداً معلومات حساسة مثل كلمة المرور.</li>
+                        </ul>
+
 
                         <p style="margin-top:30px;">مع أطيب التحيات،<br>فريق فاي والت</p>
 
