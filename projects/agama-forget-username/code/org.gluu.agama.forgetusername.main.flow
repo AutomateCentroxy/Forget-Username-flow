@@ -20,6 +20,5 @@ When userData is not null
      RRF "acknowledgementEmail.ftlh" uiFeedback
      Finish username
 Otherwise
-     RRF "InputEmail.ftlh" uiFeedback
-     // Finish the flow after invalid email message
+     uiFeedback = "Invalid email address. User does not exist."
      Finish uiFeedback
