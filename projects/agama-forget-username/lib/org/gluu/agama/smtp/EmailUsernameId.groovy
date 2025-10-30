@@ -33,7 +33,8 @@
                   <p>Jika Anda tidak merasa melakukan permintaan ini, segera hubungi tim dukungan kami melalui 
                    <a href="mailto:support@phiwallet.com" style="color:#AD9269;text-decoration:none;">support@phiwallet.com</a>
                     atau melalui live chat di 
-                    .
+                    <a href="https://www.phiwallet.com" style="color:#AD9269;text-decoration:none;">www.phiwallet.com</a>
+.
                   </p>
 
                   <p><strong>Demi keamanan Anda:</strong></p>
