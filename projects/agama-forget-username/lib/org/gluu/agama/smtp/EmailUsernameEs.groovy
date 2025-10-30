@@ -26,23 +26,21 @@ class EmailUsernameEs {
                     <tr>
                       <td style="padding:45px;font-family:'Nunito Sans',Helvetica,Arial,sans-serif;color:#51545E;font-size:16px;line-height:1.625;">
                         <p>Hola,</p>
-                        <p>¡Bienvenido/a a <strong>Phi Wallet</strong>! Tu camino hacia la protección de tu futuro financiero comienza ahora.</p>
+                        <p>Tal como solicitaste, aquí tienes el nombre de usuario asociado a esta dirección de correo electrónico:</p>
 
-                        <p><strong>Detalles de tu cuenta:</strong></p>
+                        <p><strong>Nombre de usuario:</strong></p>
                         <div style="text-align:center;margin:30px 0;">
                           <div style="display:inline-block;background-color:#f5f5f5;color:#AD9269;font-size:28px;font-weight:600;letter-spacing:2px;padding:10px 20px;border-radius:4px;">
                             """ + username + """
                           </div>
                         </div>
 
-                        <p><strong>Siguiente paso: Verifica tu identidad</strong></p>
-                        <p>Para garantizar que tu oro permanezca exclusivamente bajo tu control, necesitamos verificar tu identidad. Esta medida de seguridad protege tu oro y te otorga plenos derechos de propiedad.</p>
+                        <p>Si no realizaste esta solicitud, por favor contacta de inmediato con nuestro equipo de soporte a través de href="support@phiwallet.com" o por chat en vivo en .</p>
 
-                        <div style="text-align:center;margin:30px 0;">
-                          <a href="https://link.phiwallet.com/vll3ylhkeqb" style="background-color:#AD9269;color:#ffffff;padding:14px 28px;text-decoration:none;border-radius:4px;font-weight:600;display:inline-block;">
-                            Abrir la aplicación
-                          </a>
-                        </div>
+                        <p><strong>Por tu seguridad:</strong></p>
+                        <ul><li>Nunca compartas tu nombre de usuario ni tu contraseña.</li>
+                            <li>Phi Wallet nunca te pedirá información confidencial como tu contraseña.</li>
+                        </ul>
 
                         <p>Gracias por elegir Phi Wallet.</p>
                         <p style="margin-top:30px;">Saludos,<br>Equipo Phi Wallet</p>
