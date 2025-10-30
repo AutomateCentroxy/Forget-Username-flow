@@ -40,14 +40,13 @@ class EmailUsernameFr {
 
                         <p><strong>Pour votre sécurité :</strong></p>
 
-                        <div style="text-align:center;margin:30px 0;">
-                          <a href="https://link.phiwallet.com/vll3ylhkeqb" style="background-color:#AD9269;color:#ffffff;padding:14px 28px;text-decoration:none;border-radius:4px;font-weight:600;">
-                            Ouvrir l'application
-                          </a>
-                        </div>
+                        <ul>
+                          <li>Ne partagez jamais votre nom d'utilisateur ni votre mot de passe.</li>
+                          <li>Phi Wallet ne vous demandera jamais d'informations sensibles comme votre mot de passe</li>
+                        </ul>
 
                         <p>Merci d'utiliser Phi Wallet.</p>
-                        <p style="margin-top:30px;">Cordialement,<br>Tea Phi Wallet</p>
+                        <p style="margin-top:30px;">Cordialement,<br>Team Phi Wallet</p>
                       </td>
                     </tr>
                   </tbody>
