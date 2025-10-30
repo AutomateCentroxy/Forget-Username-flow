@@ -46,7 +46,6 @@ class EmailUsernameAr {
                           <li>لن نطلب منك أبداً معلومات حساسة مثل كلمة المرور.</li>
                         </ul>
 
-
                         <p style="margin-top:30px;">مع أطيب التحيات،<br>فريق فاي والت</p>
 
                       </td>
@@ -92,7 +91,7 @@ class EmailUsernameAr {
 """;
 
         return Map.of(
-            "subject", "مرحباً بك في Phi Wallet",
+            "subject", ":استرجاع اسم المستخدم في Phi Wallet",
             "body", html
         );
     }
