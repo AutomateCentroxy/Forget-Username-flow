@@ -40,8 +40,10 @@ class EmailUsernameEn {
                         <p>If this request wasnʼt made by you, please contact our support team immediately via support@phiwallet.com or live chat at http://www.phiwallet.com . Your account security is our top priority.</p>
 
                         <p><strong>For your safety:</strong></p>
-                        <ul><li>Never share your username or password.</li><li>Phi Wallet will never contact you asking for sensitive information like your password.</li></ul>
-                        
+                        <ul><li>Never share your username or password.</li>
+                            <li>Phi Wallet will never contact you asking for sensitive information like your password.</li>
+                        </ul>
+
                         <p>Thanks for using Phi Wallet/</p>
 
                         <p style="margin-top:30px;">Kind regards,<br>Phi Wallet Team</p>
