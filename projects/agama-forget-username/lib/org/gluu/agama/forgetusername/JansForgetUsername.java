@@ -32,13 +32,13 @@ public class JansForgetUsername extends UsernameResendclass {
     private static final String GIVEN_NAME = "givenName";
     private static final String LAST_NAME = "sn";
 
-    // ✅ Helper method to get user by any attribute (like UID, MAIL, INUM)
+    // Helper method to get user by any attribute (like UID, MAIL, INUM)
     public User getUser(String attributeName, String value) {
         UserService userService = CdiUtil.bean(UserService.class);
         return userService.getUserByAttribute(attributeName, value, true);
     }
 
-    // ✅ Helper method to safely get single-valued attributes
+    // Helper method to safely get single-valued attributes
     private String getSingleValuedAttr(User user, String attrName) {
         if (user == null || attrName == null) return null;
         try {
@@ -56,42 +56,58 @@ public class JansForgetUsername extends UsernameResendclass {
 
     @Override
     public Map<String, String> getUserEntityByMail(String email) {
-        User user = getUser(MAIL, email);
-        boolean local = user != null;
-        logger.info("There is {} local account for {}", local ? "a" : "no", email);
+        Map<String, String> userMap = new HashMap<>();
 
-        if (local) {
-            String userEmail = getSingleValuedAttr(user, MAIL);
-            String inum = getSingleValuedAttr(user, INUM_ATTR);
-            String name = getSingleValuedAttr(user, GIVEN_NAME);
-            String uid = getSingleValuedAttr(user, "uid");
-            if (uid == null || uid.isEmpty()) {
-                uid = user.getUserId();
-            }
-            String displayName = getSingleValuedAttr(user, DISPLAY_NAME);
-            String sn = getSingleValuedAttr(user, LAST_NAME);
-            String lang = getSingleValuedAttr(user, LANG);
-
-            if (name == null) {
-                name = displayName;
-                if (name == null && userEmail != null && userEmail.contains("@")) {
-                    name = userEmail.substring(0, userEmail.indexOf("@"));
-                }
-            }
-
-            Map<String, String> userMap = new HashMap<>();
-            userMap.put(UID, uid);
-            userMap.put(INUM_ATTR, inum);
-            userMap.put("name", name);
-            userMap.put("email", userEmail);
-            userMap.put(DISPLAY_NAME, displayName);
-            userMap.put(LAST_NAME, sn);
-            userMap.put(LANG, lang);
-
-            return userMap;
+        // Step 1: Validate the email input first
+        if (email == null || email.trim().isEmpty()) {
+            logger.error("Email input is null or empty");
+            return null;
         }
 
-        return new HashMap<>();
+        // Step 2: Fetch user from LDAP
+        User user = getUser(MAIL, email);
+        if (user == null) {
+            logger.warn("No local account found for email: {}", email);
+            return null; // Return null so Agama 'Otherwise' block triggers
+        }
+
+        // Step 3: Extract attributes safely
+        String userEmail = getSingleValuedAttr(user, MAIL);
+        String inum = getSingleValuedAttr(user, INUM_ATTR);
+        String name = getSingleValuedAttr(user, GIVEN_NAME);
+        String uid = getSingleValuedAttr(user, UID);
+        if (uid == null || uid.isEmpty()) {
+            uid = user.getUserId();
+        }
+        String displayName = getSingleValuedAttr(user, DISPLAY_NAME);
+        String sn = getSingleValuedAttr(user, LAST_NAME);
+        String lang = getSingleValuedAttr(user, LANG);
+
+        // Step 4: Safely build a fallback name from email
+        if (name == null) {
+            name = displayName;
+            if (name == null && userEmail != null) {
+                int atIndex = userEmail.indexOf("@");
+                if (atIndex > 0) { // only valid if @ is found
+                    name = userEmail.substring(0, atIndex);
+                } else {
+                    logger.warn("Invalid email format for user: {}", userEmail);
+                    name = "User"; // fallback
+                }
+            }
+        }
+
+        // Step 5: Prepare user data map
+        userMap.put(UID, uid);
+        userMap.put(INUM_ATTR, inum);
+        userMap.put("name", name);
+        userMap.put("email", userEmail);
+        userMap.put(DISPLAY_NAME, displayName);
+        userMap.put(LAST_NAME, sn);
+        userMap.put(LANG, lang);
+
+        logger.info("Returning user data for email: {}", email);
+        return userMap;
     }
 
     @Override
