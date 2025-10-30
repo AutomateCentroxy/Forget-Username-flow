@@ -610,7 +610,7 @@
 				},
 				"previousNodeId": "assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9",
 				"agamaData": {
-					"logMessage": "\"Invalid email entered: \"",
+					"logMessage": "\"Invalid email entered: \" email",
 					"logLevel": "error",
 					"nodeIcon": "octicon:log-16",
 					"nodeColor": "",
@@ -988,8 +988,8 @@
 		}
 	],
 	"viewport": {
-		"x": -2202,
-		"y": 267,
+		"x": -1854,
+		"y": 314,
 		"zoom": 1
 	}
 }
