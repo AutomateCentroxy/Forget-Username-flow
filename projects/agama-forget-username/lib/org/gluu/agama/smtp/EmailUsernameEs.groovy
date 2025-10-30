@@ -87,7 +87,7 @@ class EmailUsernameEs {
 """;
 
         return Map.of(
-            "subject", "Bienvenido a Phi Wallet",
+            "subject", "Recuperación de tu nombre de usuario de Phi Wallet",
             "body", html
         );
     }
