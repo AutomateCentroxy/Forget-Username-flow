@@ -64,7 +64,10 @@ public class JansForgetUsername extends UsernameResendclass {
             String userEmail = getSingleValuedAttr(user, MAIL);
             String inum = getSingleValuedAttr(user, INUM_ATTR);
             String name = getSingleValuedAttr(user, GIVEN_NAME);
-            String uid = getSingleValuedAttr(user, UID);
+            String uid = getSingleValuedAttr(user, "uid");
+            if (uid == null || uid.isEmpty()) {
+                uid = user.getUserId();
+            }
             String displayName = getSingleValuedAttr(user, DISPLAY_NAME);
             String sn = getSingleValuedAttr(user, LAST_NAME);
             String lang = getSingleValuedAttr(user, LANG);
