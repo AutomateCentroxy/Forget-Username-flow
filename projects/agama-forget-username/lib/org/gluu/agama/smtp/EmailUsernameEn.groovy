@@ -37,7 +37,13 @@ class EmailUsernameEn {
                           </div>
                         </div>
 
-                        <p>If this request wasnʼt made by you, please contact our support team immediately via href="support@phiwallet.com" or live chat at href="http://www.phiwallet.com" . Your account security is our top priority.</p>
+                        <p>
+                        If this request wasn’t made by you, please contact our support team immediately via 
+                        <a href="mailto:support@phiwallet.com" style="color:#AD9269;text-decoration:none;">support@phiwallet.com</a> 
+                        or live chat at 
+                        <a href="https://www.phiwallet.com" style="color:#AD9269;text-decoration:none;">www.phiwallet.com</a>. 
+                        Your account security is our top priority.
+                        </p>
 
                         <p><strong>For your safety:</strong></p>
                         <ul><li>Never share your username or password.</li>
