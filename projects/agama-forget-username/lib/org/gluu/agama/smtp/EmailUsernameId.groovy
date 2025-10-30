@@ -30,7 +30,7 @@
                     </div>
                   </div>
 
-                  <p>Jika Anda tidak merasa melakukan permintaan ini, segera hubungi tim dukungan kami melalui support@phiwallet.com atau melalui live chat di http://www.phiwallet.com .</p>
+                  <p>Jika Anda tidak merasa melakukan permintaan ini, segera hubungi tim dukungan kami melalui href="support@phiwallet.com" atau melalui live chat di  .</p>
 
                   <p><strong>Demi keamanan Anda:</strong></p>
 
