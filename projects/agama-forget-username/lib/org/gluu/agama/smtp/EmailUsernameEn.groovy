@@ -39,9 +39,9 @@ class EmailUsernameEn {
 
                         <p>
                         If this request wasn’t made by you, please contact our support team immediately via 
-                        <a href="mailto:support@phiwallet.com" style="color:#AD9269;text-decoration:none;">support@phiwallet.com</a> 
+                        <a href="mailto:support@phiwallet.com" style="color:#007BFF;text-decoration:none;">support@phiwallet.com</a> 
                         or live chat at 
-                        <a href="https://www.phiwallet.com" style="color:#AD9269;text-decoration:none;">www.phiwallet.com</a>. 
+                        <a href="https://www.phiwallet.com" style="color:#007BFF;text-decoration:none;">www.phiwallet.com</a>. 
                         Your account security is our top priority.
                         </p>
 
