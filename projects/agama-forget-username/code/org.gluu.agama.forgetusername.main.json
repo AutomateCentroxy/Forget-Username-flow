@@ -335,45 +335,6 @@
 			"selected": false
 		},
 		{
-			"id": "assignmentNode-44b51752-fe91-46fa-941c-9cdab3071628",
-			"type": "assignmentNode",
-			"position": {
-				"x": 2280,
-				"y": -162
-			},
-			"data": {
-				"id": "assignmentNode-44b51752-fe91-46fa-941c-9cdab3071628",
-				"type": "assignmentNode",
-				"position": {
-					"x": 2280,
-					"y": -162
-				},
-				"previousNodeId": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30",
-				"branching": "otherwise",
-				"agamaData": {
-					"assignments": [
-						{
-							"variableTypeCheck": true,
-							"assignmentExpression": "\"Invalid Email, Please Try Again!\"",
-							"assignedVariableName": "uiFeedback.errorMessage"
-						}
-					],
-					"nodeIcon": "material-symbols:equal",
-					"nodeColor": "",
-					"titleColor": "",
-					"descColor": "",
-					"displayName": "",
-					"hasComment": true,
-					"comment": "\"Invalid Email, Please Try Again!\""
-				}
-			},
-			"measured": {
-				"width": 170,
-				"height": 124
-			},
-			"selected": false
-		},
-		{
 			"id": "assignmentNode-5cf9cb3a-1b90-42cc-b872-892829a375ca",
 			"type": "assignmentNode",
 			"position": {
@@ -490,7 +451,7 @@
 				"width": 170,
 				"height": 124
 			},
-			"selected": true
+			"selected": false
 		},
 		{
 			"id": "logNode-574fc86f-300c-4541-883f-05ed40c38060",
@@ -586,6 +547,112 @@
 					"returnVariable": "username",
 					"nodeIcon": "material-symbols:line-end-square-rounded",
 					"finishMode": "withVariable"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 124
+			},
+			"selected": false
+		},
+		{
+			"id": "assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9",
+			"type": "assignmentNode",
+			"position": {
+				"x": 2280,
+				"y": -162
+			},
+			"data": {
+				"id": "assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9",
+				"type": "assignmentNode",
+				"position": {
+					"x": 2280,
+					"y": -162
+				},
+				"previousNodeId": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30",
+				"branching": "otherwise",
+				"agamaData": {
+					"assignments": [
+						{
+							"variableTypeCheck": true,
+							"assignmentExpression": "\"Invalid email address. User does not exist.\"",
+							"assignedVariableName": "uiFeedback.errorMessage"
+						}
+					],
+					"nodeIcon": "material-symbols:equal",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "Set uiFeedback Error",
+					"hasComment": true,
+					"comment": "Assigns the error message for logs or display later"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 124
+			},
+			"selected": false
+		},
+		{
+			"id": "logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74",
+			"type": "logNode",
+			"position": {
+				"x": 2530,
+				"y": -162
+			},
+			"data": {
+				"id": "logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74",
+				"type": "logNode",
+				"position": {
+					"x": 2530,
+					"y": -162
+				},
+				"previousNodeId": "assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9",
+				"agamaData": {
+					"logMessage": "\"Invalid email entered: \" email",
+					"logLevel": "error",
+					"nodeIcon": "octicon:log-16",
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "Log Invalid Email",
+					"hasComment": true,
+					"comment": "Logs the invalid email entered"
+				}
+			},
+			"measured": {
+				"width": 170,
+				"height": 124
+			},
+			"selected": true
+		},
+		{
+			"id": "finishNode-447ada9a-3509-4c1d-9cdf-6976e55aa353",
+			"type": "finishNode",
+			"position": {
+				"x": 2780,
+				"y": -162
+			},
+			"data": {
+				"id": "finishNode-447ada9a-3509-4c1d-9cdf-6976e55aa353",
+				"type": "finishNode",
+				"position": {
+					"x": 2780,
+					"y": -162
+				},
+				"previousNodeId": "logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74",
+				"agamaData": {
+					"nodeColor": "",
+					"titleColor": "",
+					"descColor": "",
+					"displayName": "Finish InvalidEmail",
+					"hasComment": true,
+					"comment": "End the Flow",
+					"flowfilename": "",
+					"returnVariable": "uiFeedback.errorMessage",
+					"finishMode": "withVariable",
+					"nodeIcon": "material-symbols:line-end-square-rounded"
 				}
 			},
 			"measured": {
@@ -749,25 +816,6 @@
 			"sourceHandle": "source_logNode-ba23f452-20e9-472b-aa0c-6fe2d093f2b3"
 		},
 		{
-			"id": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30-assignmentNode-44b51752-fe91-46fa-941c-9cdab3071628",
-			"type": "default",
-			"source": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30",
-			"target": "assignmentNode-44b51752-fe91-46fa-941c-9cdab3071628",
-			"labelBgPadding": [
-				8,
-				4
-			],
-			"labelBgBorderRadius": 4,
-			"label": "otherwise",
-			"labelBgStyle": {
-				"fill": "#009688",
-				"color": "#ffffff",
-				"fillOpacity": 0.7
-			},
-			"labelShowBg": true,
-			"sourceHandle": "source_whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30_otherwise"
-		},
-		{
 			"id": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30-assignmentNode-5cf9cb3a-1b90-42cc-b872-892829a375ca",
 			"type": "default",
 			"source": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30",
@@ -880,11 +928,68 @@
 			},
 			"labelShowBg": true,
 			"sourceHandle": "source_rrfNode-b4a4300d-64d4-4f89-8f4c-01cb3fdd2b27"
+		},
+		{
+			"id": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30-assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9",
+			"type": "default",
+			"source": "whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30",
+			"target": "assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "otherwise",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_whenNode-c0bb1ef6-6a5c-4d54-ab0c-620d792efb30_otherwise"
+		},
+		{
+			"id": "assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9-logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74",
+			"type": "default",
+			"source": "assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9",
+			"target": "logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_assignmentNode-17a2a058-28cc-46f8-a3da-d72eb56a5ae9"
+		},
+		{
+			"id": "logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74-finishNode-447ada9a-3509-4c1d-9cdf-6976e55aa353",
+			"type": "default",
+			"source": "logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74",
+			"target": "finishNode-447ada9a-3509-4c1d-9cdf-6976e55aa353",
+			"labelBgPadding": [
+				8,
+				4
+			],
+			"labelBgBorderRadius": 4,
+			"label": "",
+			"labelBgStyle": {
+				"fill": "#009688",
+				"color": "#ffffff",
+				"fillOpacity": 0.7
+			},
+			"labelShowBg": true,
+			"sourceHandle": "source_logNode-4f347a5f-b51f-4eeb-a50a-ab329b5a2f74"
 		}
 	],
 	"viewport": {
-		"x": -330.01268561390816,
-		"y": 175.03079417604653,
-		"zoom": 0.5
+		"x": -1854,
+		"y": 314,
+		"zoom": 1
 	}
 }

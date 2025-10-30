@@ -20,5 +20,9 @@ When userData is not null
      RRF "acknowledgementEmail.ftlh" uiFeedback
      Finish username
 Otherwise
-     // "Invalid Email, Please Try Again!"
-     uiFeedback.errorMessage = "Invalid Email, Please Try Again!"
+     // Assigns the error message for logs or display later
+     uiFeedback.errorMessage = "Invalid email address. User does not exist."
+     // Logs the invalid email entered
+     Log "@error Invalid email entered: " email
+     // End the Flow
+     Finish uiFeedback.errorMessage
