@@ -23,5 +23,5 @@ Otherwise
      // Displays error message when user enters invalid email, then ends the flow.
      RRF "InputEmail.ftlh" uiFeedback
      // End flow after invalid email attempt.
-     it_chedm = {success:false, error: "InvalidEmail"}
-     Finish it_chedm
+     it_idzxo = {success:false, error: "InvalidEmail"}
+     Finish it_idzxo
