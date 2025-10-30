@@ -30,7 +30,7 @@ class EmailUsernamePt {
                   </div>
                 </div>
 
-                <p>Se não foi você quem fez este pedido, por favor contacte imediatamente a nossa equipa de suporte através de support@phiwallet.com ou do chat ao vivo em http://www.phiwallet.com .</p>
+                <p>Se não foi você quem fez este pedido, por favor contacte imediatamente a nossa equipa de suporte através de support@phiwallet.com ou do chat ao vivo em href="http://www.phiwallet.com" .</p>
 
                 <p><strong>Para sua segurança:</strong></p>
 
