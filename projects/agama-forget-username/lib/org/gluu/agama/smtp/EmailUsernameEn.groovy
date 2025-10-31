@@ -28,25 +28,29 @@ class EmailUsernameEn {
                     <tr>
                       <td style="padding:45px;font-family:'Nunito Sans',Helvetica,Arial,sans-serif;color:#51545E;font-size:16px;line-height:1.625;">
                         <p>Dear User,</p>
-                        <p>Welcome to Phi Wallet! Your journey to financial protection and growth starts now.</p>
+                        <p>As requested, hereʼs the username linked to this email address:</p>
 
-                        <p><strong>Your Account Details:</strong></p>
+                        <p><strong>Username:</strong></p>
                         <div style="text-align:center;margin:30px 0;">
                           <div style="display:inline-block;background-color:#f5f5f5;color:#AD9269;font-size:28px;font-weight:600;letter-spacing:2px;padding:10px 20px;border-radius:4px;">
                             """ + username + """
                           </div>
                         </div>
 
-                        <p><strong>Next Step: Verify your identity</strong></p>
-                        <p>To ensure your gold remains exclusively under your control, we need to verify your identity. This security step protects your assets and grants you full ownership rights.</p>
+                        <p>
+                        If this request wasn’t made by you, please contact our support team immediately via 
+                        <a href="mailto:support@phiwallet.com">support@phiwallet.com</a> 
+                        or live chat at 
+                        <a href="https://www.phiwallet.com" style="color:blue;">www.phiwallet.com</a>. 
+                        Your account security is our top priority.
+                        </p>
 
-                        <div style="text-align:center;margin:30px 0;">
-                          <a href="https://link.phiwallet.com/vll3ylhkeqb" style="background-color:#AD9269;color:#ffffff;padding:14px 28px;text-decoration:none;border-radius:4px;font-weight:600;display:inline-block;">
-                            Open the App
-                          </a>
-                        </div>
+                        <p><strong>For your safety:</strong></p>
+                        <ul><li>Never share your username or password.</li>
+                            <li>Phi Wallet will never contact you asking for sensitive information like your password.</li>
+                        </ul>
 
-                        <p>If you have any questions, we’re just a message away. Thank you for choosing Phi Wallet!</p>
+                        <p>Thanks for using Phi Wallet/</p>
 
                         <p style="margin-top:30px;">Kind regards,<br>Phi Wallet Team</p>
                       </td>
@@ -92,7 +96,7 @@ class EmailUsernameEn {
 """;
 
         return Map.of(
-            "subject", "Get Started with Phi Wallet",
+            "subject", "Your Phi Wallet Username Recovery",
             "body", html
         );
     }
